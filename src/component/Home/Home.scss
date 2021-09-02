@@ -1,0 +1,25 @@
+/* Home */
+/* ////////////////////////////////////////////////////// */
+
+.home {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    font-size: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    &__text {
+      font-size: 50px;
+    }
+  }
+}
+
+/* ////////////////////////////////////////////////////// */
