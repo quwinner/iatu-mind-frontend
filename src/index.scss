@@ -1,3 +1,23 @@
+:root {
+  --font-code: Monaco, Menlo, Consolas, Ubuntu Mono, Courier New, monospace;
+  --font-alt-hadline-letter-spacing: 0.18px;
+  --font-family-base: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --font-color-base-darker: #aaaaaa;
+  --font-color-base: #dddddd;
+
+  --background-color: rgb(32, 32, 32);
+  --background-color-highlight: rgba(26, 26, 26);
+  --background-color-lighter: rgba(50, 50, 50);
+  --background-content: rgba(25, 25, 25);
+
+  --shadow-color-base: rgb(15, 15, 15);
+  --shadow-color-base-darker: rgba(40, 40, 40);
+  --shadow-color-active: rgb(46, 221, 206);
+  --shadow-color-hover: rgb(45, 45, 45);
+}
+
 body {
   background-attachment: fixed;
   background-position: top center;
@@ -10,31 +30,20 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: var(--background-color);
-}
 
-:root {
-  --font-code: Monaco, Menlo, Consolas, Ubuntu Mono, Courier New, monospace;
-  --font-alt-hadline-letter-spacing: 0.18px;
-  --font-family-base: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-  --font-color-base-darker: #aaaaaa;
-  --font-color-base: #dddddd;
-
-  --background-color-lighter: rgba(50, 50, 50);
-  --background-color: rgb(51, 102, 204);
-  --background-color-highlight: rgba(26, 26, 26);
-  --background-content: rgba(25, 25, 25);
+  color: var(--font-color-base) !important;
+  background-color: var(--background-color) !important;
 }
 
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+
+  font-size: 10px;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 body *::-moz-selection {
@@ -60,3 +69,9 @@ body *::selection {
   -ms-user-select: none;
   user-select: none;
 }
+
+// @media screen and (max-width: 768px) {
+//   html {
+//     font-size: 5px;
+//   }
+// }
