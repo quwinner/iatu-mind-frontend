@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import Home from './Home/Home'
 import Header from './Header/Header'
+import Schedule from './Schedule/Schedule'
 
 // Component
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,6 +17,7 @@ const App: FC<any> = () => {
       <main className="main">
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/schedule" component={Schedule} />
         </Switch>
       </main>
     </>
