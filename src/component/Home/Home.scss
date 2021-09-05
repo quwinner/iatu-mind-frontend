@@ -10,16 +10,17 @@
   justify-content: center;
 
   &__text {
-    font-size: 150px;
+    font-size: clamp(1rem, 10vw, 2rem);
+    // font-size: calc(2.75em + 1vmin);
   }
 }
 
-@media screen and (max-width: 768px) {
-  .home {
-    &__text {
-      font-size: 50px;
-    }
-  }
-}
+// @media screen and (max-width: 768px) {
+//   .home {
+//     &__text {
+//       font-size: 50px;
+//     }
+//   }
+// }
 
 /* ////////////////////////////////////////////////////// */
