@@ -1,0 +1,149 @@
+/* Schedule Pair */
+/* ////////////////////////////////////////////////////// */
+
+.schedule-pair {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: first baseline;
+
+  min-height: 60px;
+  height: 100%;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    & > * {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  &__time {
+    * {
+      color: var(--font-color-base-darker);
+      font-size: 1.6rem;
+    }
+  }
+
+  &__type {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+
+    .type-content {
+      &__item {
+        display: flex;
+        flex-direction: row;
+
+        &.additional {
+          opacity: 0;
+          height: 0px;
+          transition: all 0.1s ease-in;
+        }
+
+        &.extend {
+          &.additional {
+            opacity: 1;
+            height: 25px;
+            transition: all 0.1s ease-in;
+          }
+        }
+        transition: all 0.1s ease-in;
+      }
+
+      &__icon {
+        color: var(--font-color-base-darker);
+        font-size: 1.2rem;
+        text-align: center;
+        border-radius: 5px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--background-color-lighter);
+      }
+
+      &__info {
+        overflow: hidden;
+        font-size: 1.4rem;
+        color: var(--font-color-base-darker);
+        width: 0px;
+        opacity: 0;
+        transition: all 0.1s ease-in;
+      }
+
+      &__audit {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--font-color-base-darker);
+      }
+    }
+  }
+
+  &__hr {
+    display: flex;
+    background-color: var(--background-color-lighter);
+    opacity: 0.5;
+
+    &.v {
+      margin: 0 5px;
+      height: 40px;
+      width: 1px;
+    }
+    &.h {
+      margin: 0 auto;
+      padding: 0;
+      width: 95%;
+      height: 1px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+  }
+
+  &__teacher {
+    color: var(--font-color-base-darker);
+    opacity: 0;
+    height: 0px;
+    font-size: 1.25rem;
+
+    &.extend {
+      opacity: 1;
+      height: 100%;
+      transition: all 0.1s ease-in;
+    }
+    transition: all 0.1s ease-in;
+  }
+
+  &.extend {
+    transition: all 0.1s ease-in;
+
+    .schedule-pair {
+      &__type {
+        .type-content {
+          &__info {
+            width: 80px;
+            opacity: 1;
+            padding-left: 5px;
+            transition: all 0.1s ease-in;
+          }
+        }
+      }
+    }
+  }
+
+  transition: all 0.1s ease-in;
+}
+
+// @media screen and (max-width: 768px) {
+// }
+
+/* ////////////////////////////////////////////////////// */

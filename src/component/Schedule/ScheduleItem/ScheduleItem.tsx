@@ -1,65 +1,88 @@
 import './ScheduleItem.scss'
-import React, { FC } from 'react'
+import React, { FC, useMemo, useState } from 'react'
+import cn from 'classnames'
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Import Component
+import SchedulePair from '../SchedulePair/SchedulePair'
+import { Schedule } from '../../../types'
+import uniquePair from '../../../utils/uniquePair'
+
+// Utils
 
 // Interface
 interface Props {
-  item: any
+  date: any
 }
 
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const ScheduleItem: FC<Props> = (props) => {
+  const [extend, setExtend] = useState<boolean>(false)
+
+  const optionsPair = useMemo(() => uniquePair(schedule), [schedule])
+
   return (
-    <div className="schedule-item">
+    <div onClick={(e) => setExtend(!extend)} className={cn('schedule-item', { active: false }, { extend: extend })}>
       <div className="schedule-header">
         <div className="schedule-header__dayname">Понедельник</div>
         <div className="schedule-header__date">7 Сентября</div>
       </div>
-
-      <div className="schedule-pair">
-        <div className="schedule-pair__time">
-          <div>11:50</div>
-          <div>13:10</div>
-        </div>
-        <div className="schedule-pair__hr v" />
-        <div className="schedule-pair__type">
-          <div>A</div>
-          <div>B</div>
-        </div>
-        <div className="schedule-pair__hr v" />
-        <div className="schedule-pair__name">История</div>
-      </div>
-      <hr className="schedule-pair__hr h" />
-      <div className="schedule-pair">
-        <div className="schedule-pair__time">
-          <div>11:50</div>
-          <div>13:10</div>
-        </div>
-        <div className="schedule-pair__hr v" />
-        <div className="schedule-pair__type type-content">
-          <div className="type-content__icon">1</div>
-          <div className="type-content__icon">D</div>
-        </div>
-        <div className="schedule-pair__hr v" />
-        <div className="schedule-pair__name">История</div>
-      </div>
-
-      <hr className="schedule-pair__hr h" />
-      <div className="schedule-pair">
-        <div className="schedule-pair__time">
-          <div>11:50</div>
-          <div>13:10</div>
-        </div>
-        <div className="schedule-pair__hr v" />
-        <div className="schedule-pair__type">
-          <div>A</div>
-          <div>B</div>
-        </div>
-        <div className="schedule-pair__hr v" />
-        <div className="schedule-pair__name">История</div>
-      </div>
+      {optionsPair.map((x, key) => {
+        return (
+          <>
+            <hr className="schedule-pair__hr h" />
+            <SchedulePair
+              extend={extend}
+              schedule={schedule.filter((y, key) => {
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                return y.time_start === x
+              })}
+            />
+          </>
+        )
+      })}
     </div>
   )
 }
 
 export default ScheduleItem
+
+const schedule: Schedule[] = [
+  {
+    time_start: '8:00',
+    time_end: '13:00',
+    group: '0',
+    type: 'лекция',
+    cab: '132',
+    discipline: 'История',
+    prepod: 'Черненькая Елена Владимировна',
+  },
+  {
+    time_start: '13:00',
+    time_end: '15:00',
+    group: '1',
+    type: 'лекция',
+    cab: '132',
+    discipline: 'Элективные курсы по физической культуре и спорту',
+    prepod: 'Черненькая Елена Владимировна',
+  },
+  {
+    time_start: '13:00',
+    time_end: '15:00',
+    group: '2',
+    type: 'лекция',
+    cab: '132',
+    discipline: 'Элективные курсы по физической культуре и спорту',
+    prepod: 'Черненькая Елена Владимировна',
+  },
+  {
+    time_start: '15:00',
+    time_end: '17:00',
+    group: '0',
+    type: 'лекция',
+    cab: '132',
+    discipline: 'Химия',
+    prepod: 'Черненькая Елена Владимировна',
+  },
+]
