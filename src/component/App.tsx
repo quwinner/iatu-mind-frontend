@@ -16,8 +16,8 @@ const App: FC<any> = () => {
       <Header />
       <main className="main">
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/schedule" component={Schedule} />
+          <Route exact path="/schedule" component={Home} />
+          <Route exact path="/" component={Schedule} />
         </Switch>
       </main>
     </>
