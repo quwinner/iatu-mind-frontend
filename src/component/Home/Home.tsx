@@ -7,11 +7,7 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Home: FC<Props> = (props) => {
-  return (
-    <section className="home">
-      <div className="home__date">DATE</div>
-    </section>
-  )
+  return <section className="home"></section>
 }
 
 export default Home
