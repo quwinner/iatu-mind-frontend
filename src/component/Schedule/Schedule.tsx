@@ -17,7 +17,7 @@ const schedule = [1, 2, 3, 4, 5, 6]
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Schedule: FC<Props> = (props) => {
   return (
-    <section className="schedule">
+    <section className="schedule unselectable">
       <div className="schedule-date">
         <div className="schedule-arrow-pagination">
           <Arrow className="schedule-arrow-pagination__icon back" />
