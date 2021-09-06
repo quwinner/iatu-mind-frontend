@@ -11,6 +11,9 @@
   overflow: hidden;
   z-index: 3;
   padding-top: 15px;
+  padding: 0 50px;
+
+  max-width: 1368px;
 }
 
 .schedule-arrow-pagination {
@@ -94,6 +97,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .schedule {
+    padding: 0;
+  }
+
   .schedule-arrow-pagination__text {
     display: none;
   }
