@@ -86,3 +86,6 @@ const schedule: Schedule[] = [
     prepod: 'Черненькая Елена Владимировна',
   },
 ]
+function classnames(arg0: string, arg1: { active: boolean }, arg2: { extend: boolean }): string | undefined {
+  throw new Error('Function not implemented.')
+}
