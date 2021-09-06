@@ -1,0 +1,15 @@
+/* Schedule Time */
+/* ////////////////////////////////////////////////////// */
+
+.schedule-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1rem, 10vw, 1.5rem);
+
+  color: var(--font-color-base-darker);
+}
+@media screen and (max-width: 768px) {
+}
+
+/* ////////////////////////////////////////////////////// */
