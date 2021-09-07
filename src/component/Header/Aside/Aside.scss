@@ -45,8 +45,6 @@ $sizeAsideIncrement: 4.5;
   }
 
   &:hover {
-    border-top: 1px solid var(--border-base-color);
-
     width: $sizeAside * $sizeAsideIncrement;
     transition: all 0.2s ease-in;
     // transform: translateX(100px);
@@ -70,6 +68,7 @@ $sizeAsideIncrement: 4.5;
   width: 100vw;
   backdrop-filter: blur(2px);
   // background-color: red;
+  pointer-events: none;
 
   &.active {
     opacity: 1;

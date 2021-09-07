@@ -7,6 +7,7 @@
 
   --font-color-base-darker: #aaaaaa;
   --font-color-base: #dddddd;
+  --font-color-active: #3f7ee4;
 
   --background-color: #202020;
   --background-color-highlight: #101010;
@@ -76,6 +77,24 @@ body *::selection {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 // @media screen and (max-width: 768px) {

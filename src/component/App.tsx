@@ -10,6 +10,7 @@ import Aside from './Header/Aside/Aside'
 
 import Home from './Home/Home'
 import Schedule from './Schedule/Schedule'
+import Disciplines from './Disciplines/Disciplines'
 
 // Component
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +29,7 @@ const App: FC<any> = () => {
         <main className="main">
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/disciplines" component={Disciplines} />
             <Route exact path="/schedule" component={Schedule} />
           </Switch>
         </main>
