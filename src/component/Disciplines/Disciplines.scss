@@ -1,0 +1,100 @@
+/* Disciplines */
+/* ////////////////////////////////////////////////////// */
+
+.disciplines {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 3;
+  animation: fadein 0.25s ease-in;
+}
+
+.disciplines-img {
+  width: 100%;
+  position: relative;
+  background-position: bottom, center;
+  background-repeat: repeat-x, no-repeat;
+  background-color: #000;
+  background-size: auto, cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  min-height: 340px;
+  max-height: 600px;
+}
+
+.disciplines-period {
+  height: 40px;
+  width: 100%;
+  background-color: var(--background-content);
+  box-shadow: 0 2px 8px 2px var(--background-content);
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 1368px;
+    margin: 0 auto;
+    height: 100%;
+  }
+
+  &__item {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    color: var(--font-color-base-darker);
+    font-size: clamp(1rem, 10vw, 1.4rem);
+    font-weight: 700;
+    transform-origin: center;
+
+    &:not(.hr):hover {
+      color: var(--font-color-active);
+      transform: scale(1.1);
+      transition: all 0.2s ease-in;
+    }
+
+    &.hr {
+      cursor: default;
+
+      width: 25px;
+
+      > * {
+        width: 1px;
+        height: 50%;
+        background-color: var(--background-color-lighter);
+        transform: rotate(35deg);
+      }
+    }
+
+    &.active {
+      color: var(--font-color-active);
+      font-size: 1.7rem;
+    }
+
+    transition: all 0.2s ease-in;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .disciplines {
+    padding: 0;
+  }
+}
+
+/* ////////////////////////////////////////////////////// */
