@@ -7,11 +7,16 @@
 
   --font-color-base-darker: #aaaaaa;
   --font-color-base: #dddddd;
+  --font-color-active: #3f7ee4;
 
-  --background-color: rgb(32, 32, 32);
-  --background-color-highlight: rgba(26, 26, 26);
-  --background-color-lighter: rgba(50, 50, 50);
-  --background-content: rgba(25, 25, 25);
+  --background-color: #202020;
+  --background-color-highlight: #101010;
+  --background-color-lighter: #323232;
+  --background-content: #191919;
+
+  --icon-base-color: #999999;
+
+  --border-base-color: #444;
 
   --shadow-color-base: rgb(15, 15, 15);
   --shadow-color-base-darker: rgba(40, 40, 40);
@@ -72,6 +77,24 @@ body *::selection {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 // @media screen and (max-width: 768px) {
