@@ -4,12 +4,21 @@
 .main {
   font-family: var(--font-family-base);
   position: relative;
-  padding-top: 60px;
+  padding-top: 50px;
   width: 100vw;
   height: 100vh;
 }
 
 @media screen and (max-width: 768px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  html {
+    font-size: 7.5px;
+  }
 }
 
 /* ////////////////////////////////////////////////////// */

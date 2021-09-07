@@ -15,16 +15,15 @@ const ScheduleTime: FC<Props> = (props) => {
 
   useEffect(() => {
     if (1000 - (seconds + 1) <= 0) {
-      // props.handleReloadDaily()
       setSeconds(0)
     }
 
     setTimeout(() => setSeconds(seconds + 1), 1000)
-  })
+  }, [seconds])
 
   return (
     <div className="schedule-time">
-      До следующей пары {new Date((1000 - (seconds + 1)) * 1000).toISOString().substr(11, 8)}
+      До следующейпары {new Date((1000 - seconds) * 1000).toISOString().substr(11, 8)}
     </div>
   )
 }
