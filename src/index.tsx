@@ -1,5 +1,4 @@
 import './index.scss'
-import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import App from './component/App'
 
@@ -9,12 +8,16 @@ import 'bootstrap/dist/css/bootstrap.css'
 // Router
 import { BrowserRouter as Router } from 'react-router-dom'
 
+//Redux
+import { store } from './store/store'
+import { Provider } from 'react-redux'
+
 ReactDOM.render(
-  <StrictMode>
+  <Provider store={store}>
     <Router>
       <App />
     </Router>
-  </StrictMode>,
+  </Provider>,
 
   document.getElementById('root')
 )
