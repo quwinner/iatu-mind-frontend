@@ -55,8 +55,3 @@ const Disciplines: FC<Props> = (props) => {
 }
 
 export default Disciplines
-
-// style={{
-
-// url("/assets/artist-profile-masthead-gradient.png"),
-// url("https://cdna.artstation.com/p/users/covers/003/481/052/default/a3cc8f730fef979264bddb5e44e657a0.jpg?1630585545")
