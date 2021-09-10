@@ -31,6 +31,8 @@
 
   &__type {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     gap: 1px;
 
@@ -38,7 +40,7 @@
       &__item {
         display: flex;
         flex-direction: row;
-
+        padding: 1px;
         &.additional {
           opacity: 0;
           height: 0px;
@@ -85,13 +87,17 @@
 
   &__hr {
     display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--background-color-lighter);
     opacity: 0.5;
 
     &.v {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 5px;
-      height: 40px;
-      width: 1px;
+      min-width: 1px;
     }
     &.h {
       margin: 0 auto;
@@ -114,7 +120,7 @@
     color: var(--font-color-base-darker);
     opacity: 0;
     height: 0px;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 
     &.extend {
       opacity: 1;
