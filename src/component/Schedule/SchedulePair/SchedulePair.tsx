@@ -12,8 +12,6 @@ interface Props {
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SchedulePair: FC<Props> = (props) => {
-  console.log(props.schedule)
-
   return (
     <div className={cn('schedule-pair', { extend: props.extend })}>
       <div className="schedule-pair__time">
@@ -26,7 +24,7 @@ const SchedulePair: FC<Props> = (props) => {
             <div className="schedule-pair__hr v" />
             <div className="schedule-pair__type type-content">
               <div className="type-content__item">
-                <div className="type-content__icon">{props.schedule[0].group}</div>
+                <div className="type-content__icon">{props.schedule[0].subgroup}</div>
                 <div className="type-content__info">подгруппа</div>
               </div>
               <div className="type-content__item">
@@ -34,7 +32,7 @@ const SchedulePair: FC<Props> = (props) => {
                 <div className="type-content__info">Discord</div>
               </div>
               <div className={cn('type-content__item additional', { extend: props.extend })}>
-                <div className="type-content__audit">{props.schedule[0].cab}</div>
+                <div className="type-content__audit">{props.schedule[0].cabinet}</div>
                 <div className="type-content__info">Кабинет</div>
               </div>
             </div>
@@ -43,7 +41,7 @@ const SchedulePair: FC<Props> = (props) => {
               <div className="schedule-pair__name">{props.schedule[0].discipline}</div>
               <div className={cn('schedule-pair__teacher', { extend: props.extend })}>
                 <div className="schedule-pair__hr h" />
-                {props.schedule[0].prepod}
+                {props.schedule[0].teacher}
               </div>
             </div>
           </div>
@@ -51,11 +49,11 @@ const SchedulePair: FC<Props> = (props) => {
           props.schedule.map((val, key) => {
             return (
               <>
-                <div>
+                <div key={key}>
                   <div className="schedule-pair__hr v" />
                   <div className="schedule-pair__type type-content">
                     <div className="type-content__item">
-                      <div className="type-content__icon">{val.group}</div>
+                      <div className="type-content__icon">{val.subgroup}</div>
                       <div className="type-content__info">подгруппа</div>
                     </div>
                     <div className="type-content__item">
@@ -63,7 +61,7 @@ const SchedulePair: FC<Props> = (props) => {
                       <div className="type-content__info">Discord</div>
                     </div>
                     <div className={cn('type-content__item additional', { extend: props.extend })}>
-                      <div className="type-content__audit">{val.cab}</div>
+                      <div className="type-content__audit">{val.cabinet}</div>
                       <div className="type-content__info">Кабинет</div>
                     </div>
                   </div>
@@ -72,7 +70,7 @@ const SchedulePair: FC<Props> = (props) => {
                     <div className="schedule-pair__name">{val.discipline}</div>
                     <div className={cn('schedule-pair__teacher', { extend: props.extend })}>
                       <div className="schedule-pair__hr h" />
-                      {val.prepod}
+                      {val.teacher}
                     </div>
                   </div>
                 </div>

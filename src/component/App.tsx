@@ -17,7 +17,7 @@ import Disciplines from './Disciplines/Disciplines'
 
 const App: FC<any> = () => {
   const client = new ApolloClient({
-    uri: 'http://localhost:8080/graphql',
+    uri: 'https://surfgxds.xyz:8081/graphql',
     cache: new InMemoryCache(),
   })
 
@@ -25,7 +25,7 @@ const App: FC<any> = () => {
     <>
       <ApolloProvider client={client}>
         <Header />
-        <Aside />
+        {/* <Aside /> */}
         <main className="main">
           <Switch>
             <Route exact path="/" component={Home} />

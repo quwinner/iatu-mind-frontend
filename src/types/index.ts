@@ -12,13 +12,15 @@ export interface AppState {
 // =======================================================================================
 
 export interface Schedule {
-  time_start: string
-  time_end: string
-  group: string
-  type: string
-  cab: string
+  dayName: string
+  date: string | Date
+  timeStart: string
+  timeStop: string
   discipline: string
-  prepod: string
+  cabinet: string
+  teacher: string
+  type: string
+  subgroup: string
 }
 
 export interface ScheduleState {
@@ -31,7 +33,7 @@ export interface ScheduleState {
 // Store
 // =======================================================================================
 
-export interface RootState {
-  appState: AppState
-  scheduleState: ScheduleState
-}
+// export interface RootState {
+//   appState: AppState
+//   scheduleState: ScheduleState
+// }

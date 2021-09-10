@@ -20,6 +20,7 @@ export default appSlice.reducer
 export function initApp() {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
+      console.log('initApp')
     } catch (e) {
     } finally {
     }
