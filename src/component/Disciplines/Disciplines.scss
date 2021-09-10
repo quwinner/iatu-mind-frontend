@@ -91,10 +91,22 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .disciplines {
-    padding: 0;
-  }
+.disciplines-list {
+  max-width: 1368px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-top: 10px;
+  width: 100%;
 }
+
+// @media screen and (max-width: 768px) {
+//   .disciplines {
+//     padding: 0;
+//   }
+// }
 
 /* ////////////////////////////////////////////////////// */
