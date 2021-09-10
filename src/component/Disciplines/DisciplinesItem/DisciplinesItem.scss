@@ -1,0 +1,97 @@
+/* Disciplines Item */
+/* ////////////////////////////////////////////////////// */
+
+.discipline-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-radius: 5px;
+
+  background-color: var(--background-color-lighter);
+  max-width: 300px;
+  min-width: 200px;
+  margin: 5px;
+  padding: 5px;
+
+  &__hr {
+    display: flex;
+
+    margin: 0 auto;
+
+    min-height: 2px;
+    width: 90%;
+    background-color: #575757;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 10px;
+    overflow: hidden;
+
+    padding-bottom: 5px;
+
+    .info-item {
+      &__icon {
+        margin: auto;
+
+        max-width: 40px;
+        max-height: 40px;
+        width: 100%;
+        height: 100%;
+      }
+      &__name {
+        color: var(--font-color-base);
+        font-weight: 500;
+        font-size: 1.7rem;
+      }
+    }
+  }
+
+  &__tip {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    height: 25px;
+    width: 100%;
+
+    padding: 0 10px;
+
+    .tip-item {
+      display: flex;
+      flex-direction: row;
+
+      padding: 0 5px;
+      gap: 1px;
+
+      &__icon {
+        width: 18px;
+        height: 18px;
+        fill: var(--font-color-base-darker);
+      }
+
+      &__value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--font-color-base-darker);
+      }
+
+      &.last {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+// @media screen and (max-width: 768px) {
+//   .disciplines {
+//     padding: 0;
+//   }
+// }
+
+/* ////////////////////////////////////////////////////// */
