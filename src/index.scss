@@ -9,8 +9,9 @@
   --font-color-base: #dddddd;
   --font-color-active: #3f7ee4;
 
-  --background-color: #202020;
-  --background-color-highlight: #101010;
+  --background-color: #cdd2d4;
+  // --background-color: #202020;
+  --background-color-highlight: #606868;
   --background-color-lighter: #323232;
   --background-content: #191919;
 
@@ -102,3 +103,16 @@ body *::selection {
 //     font-size: 5px;
 //   }
 // }
+
+.MuiPaper-root {
+  background-color: rgb(15, 15, 15) !important;
+
+  > * {
+    font-family: 'Montserrat';
+    color: var(--font-color-base);
+  }
+
+  * {
+    font-size: 1.5rem !important;
+  }
+}

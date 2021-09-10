@@ -1,18 +1,21 @@
 import './ScheduleItem.scss'
 import React, { FC, useMemo, useState } from 'react'
 import cn from 'classnames'
+import dayjs from 'dayjs'
+import loc from 'dayjs/locale/ru'
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
 import SchedulePair from '../SchedulePair/SchedulePair'
 import { Schedule } from '../../../types'
 import uniquePair from '../../../utils/uniquePair'
+import fixDayName from '../../../utils/fixDayName'
 
 // Utils
 
 // Interface
 interface Props {
-  date: any
+  schedule: Schedule[]
 }
 
 // Component
@@ -20,23 +23,33 @@ interface Props {
 const ScheduleItem: FC<Props> = (props) => {
   const [extend, setExtend] = useState<boolean>(false)
 
-  const optionsPair = useMemo(() => uniquePair(schedule), [schedule])
+  const date = props.schedule[0]?.date
 
+  const optionsPair = useMemo(() => uniquePair(props.schedule), [props.schedule])
   return (
-    <div onClick={(e) => setExtend(!extend)} className={cn('schedule-item', { active: false }, { extend: extend })}>
+    <div
+      onClick={(e) => setExtend(!extend)}
+      className={cn(
+        'schedule-item',
+        { active: dayjs(Date.now()).date() === dayjs(date).date() && date },
+        { extend: extend }
+      )}
+    >
       <div className="schedule-header">
-        <div className="schedule-header__dayname">Понедельник</div>
-        <div className="schedule-header__date">7 Сентября</div>
+        <div className="schedule-header__dayname">
+          {date ? fixDayName(dayjs(date).locale(loc).format('dddd')) : '---'}
+        </div>
+        <div className="schedule-header__date">{date ? dayjs(date).locale(loc).format('D MMMM') : '---'}</div>
       </div>
       {optionsPair.map((x, key) => {
         return (
           <>
             <hr className="schedule-pair__hr h" />
             <SchedulePair
+              key={key}
               extend={extend}
-              schedule={schedule.filter((y, key) => {
-                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                return y.time_start === x
+              schedule={props.schedule.filter((y, key) => {
+                return y.timeStart === x
               })}
             />
           </>
@@ -47,45 +60,3 @@ const ScheduleItem: FC<Props> = (props) => {
 }
 
 export default ScheduleItem
-
-const schedule: Schedule[] = [
-  {
-    time_start: '8:00',
-    time_end: '13:00',
-    group: '0',
-    type: 'лекция',
-    cab: '132',
-    discipline: 'История',
-    prepod: 'Черненькая Елена Владимировна',
-  },
-  {
-    time_start: '13:00',
-    time_end: '15:00',
-    group: '1',
-    type: 'лекция',
-    cab: '132',
-    discipline: 'Элективные курсы по физической культуре и спорту',
-    prepod: 'Черненькая Елена Владимировна',
-  },
-  {
-    time_start: '13:00',
-    time_end: '15:00',
-    group: '2',
-    type: 'лекция',
-    cab: '132',
-    discipline: 'Элективные курсы по физической культуре и спорту',
-    prepod: 'Черненькая Елена Владимировна',
-  },
-  {
-    time_start: '15:00',
-    time_end: '17:00',
-    group: '0',
-    type: 'лекция',
-    cab: '132',
-    discipline: 'Химия',
-    prepod: 'Черненькая Елена Владимировна',
-  },
-]
-function classnames(arg0: string, arg1: { active: boolean }, arg2: { extend: boolean }): string | undefined {
-  throw new Error('Function not implemented.')
-}
