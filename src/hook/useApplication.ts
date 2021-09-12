@@ -11,21 +11,22 @@ import { bindActionCreators } from 'redux'
 // Selector
 export const useApplication = () => {
   const dispatch = useDispatch()
-  const { initApp, closeGroupSelector, openGroupSelector, changeGroup, changePeriod } = bindActionCreators(
-    ActionCreators,
-    dispatch
-  )
+  const { openAside, closeAside, initApp, closeGroupSelector, openGroupSelector, changeGroup, changePeriod } =
+    bindActionCreators(ActionCreators, dispatch)
 
-  const { isLoading, groups, groupNow, periods, periodNow, isGroupSelectorOpen, error } = useTypesSelector(
+  const { isAsideOpen, isLoading, groups, groupNow, periods, periodNow, isGroupSelectorOpen, error } = useTypesSelector(
     (state) => state.appState
   )
   return {
+    isAsideOpen,
     isLoading,
     groups,
     groupNow,
     isGroupSelectorOpen,
     error,
     initApp,
+    openAside,
+    closeAside,
     closeGroupSelector,
     openGroupSelector,
     changeGroup,

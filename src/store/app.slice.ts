@@ -22,6 +22,12 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    openAside: (state) => {
+      state.isAsideOpen = true
+    },
+    closeAside: (state) => {
+      state.isAsideOpen = false
+    },
     openGroupSelector: (state) => {
       state.isGroupSelectorOpen = true
     },
@@ -43,8 +49,16 @@ const appSlice = createSlice({
   },
 })
 
-export const { openGroupSelector, closeGroupSelector, getAllGroups, setGroup, getAllPeriods, setPeriod } =
-  appSlice.actions
+export const {
+  openAside,
+  closeAside,
+  openGroupSelector,
+  closeGroupSelector,
+  getAllGroups,
+  setGroup,
+  getAllPeriods,
+  setPeriod,
+} = appSlice.actions
 export default appSlice.reducer
 
 // Action

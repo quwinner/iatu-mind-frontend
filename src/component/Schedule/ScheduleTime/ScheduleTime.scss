@@ -7,7 +7,8 @@
   justify-content: center;
   font-size: clamp(1rem, 10vw, 1.5rem);
 
-  color: var(--font-color-base-darker);
+  font-weight: 500;
+  color: var(--font-color-i-base);
 }
 @media screen and (max-width: 768px) {
 }
