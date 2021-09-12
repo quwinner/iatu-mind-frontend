@@ -1,5 +1,8 @@
 import './Schedule.scss'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
+
+import dayjs from 'dayjs'
+import loc from 'dayjs/locale/ru'
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
@@ -7,15 +10,41 @@ import ScheduleItem from './ScheduleItem/ScheduleItem'
 import ScheduleTime from './ScheduleTime/ScheduleTime'
 
 import { ReactComponent as Arrow } from '../../utils/img/arrow_left.svg'
+import axios from 'axios'
+
+// Redux
+import { useDispatch } from 'react-redux'
+import { getSchedule } from '../../store/schedule.slice'
+import { useApplication } from '../../hook/useApplication'
+import { useSchedule } from '../../hook/useSchedule'
+import Loading from '../Loading/Loading'
+import { Schedule as ScheduleT } from '../../types'
+import fixDayName from '../../utils/fixDayName'
 
 // Interface
 interface Props {}
 
-const schedule = [1, 2, 3, 4, 5, 6]
+const day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Schedule: FC<Props> = (props) => {
+  // const { initApp } = useApplication()
+  const { isLoading, schedule, getSchedule } = useSchedule()
+  const schedulePair = (schedule: ScheduleT[], dayName: string): ScheduleT[] =>
+    schedule.filter((x) => x.dayName === dayName)
+
+  useEffect(() => {
+    getSchedule()
+  }, [])
+
+  if (!isLoading)
+    return (
+      <div>
+        <Loading />
+      </div>
+    )
+
   return (
     <section className="schedule unselectable">
       <div className="schedule-date">
@@ -29,11 +58,11 @@ const Schedule: FC<Props> = (props) => {
           <Arrow className="schedule-arrow-pagination__icon next" />
         </div>
       </div>
-      <div className="schedule-today">Сегодня 5 Сентября</div>
+      <div className="schedule-today">Сегодня {fixDayName(dayjs(Date.now()).locale(loc).format('D MMMM'))}</div>
       <ScheduleTime />
       <div className="schedule-content">
-        {schedule.map((val, key) => {
-          return <ScheduleItem key={key} date={val} />
+        {day.map((val, key) => {
+          return <ScheduleItem key={key} schedule={schedulePair(schedule, val)} />
         })}
       </div>
     </section>

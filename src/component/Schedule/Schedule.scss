@@ -46,7 +46,7 @@
   &__text {
     font-size: 1.8rem;
     font-weight: 300;
-    opacity: 0;
+    opacity: 0.5;
     transition: all 0.2s var(--transition-base-type);
     color: var(--font-color-base-darker);
   }

@@ -12,17 +12,30 @@ const initialState: ScheduleState = {
 const scheduleSlice = createSlice({
   name: 'schedule',
   initialState,
-  reducers: {},
+  reducers: {
+    reqeustShedule: (state) => {
+      state.isLoading = false
+      state.schedule = []
+    },
+    receiveShedule: (state, { payload }: PayloadAction<Schedule[]>) => {
+      state.isLoading = true
+      state.schedule = payload
+    },
+  },
 })
 
-export const {} = scheduleSlice.actions
+export const { reqeustShedule, receiveShedule } = scheduleSlice.actions
 export default scheduleSlice.reducer
 
 // Action
 export function getSchedule() {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
+      dispatch(reqeustShedule())
+      const { data } = await axios.get('http://localhost:8081/timetable')
+      dispatch(receiveShedule(data))
     } catch (e) {
+      console.log('getSchedule', e)
     } finally {
     }
   }

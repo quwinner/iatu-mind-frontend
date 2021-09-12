@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 
-import { RootState } from '../types'
+import { RootState } from '../store/rootReducer'
 
 interface SocketMiddlewareParams {
   dispatch: Dispatch
