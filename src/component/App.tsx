@@ -25,7 +25,7 @@ const App: FC<any> = () => {
   return (
     <>
       <Header />
-      {/* <Aside /> */}
+      <Aside />
       <main className="main">
         <Switch>
           <Route exact path="/" component={Home} />

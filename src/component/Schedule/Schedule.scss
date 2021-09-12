@@ -10,8 +10,7 @@
   width: 100%;
   overflow: hidden;
   z-index: 3;
-  padding-top: 15px;
-  padding: 0 50px;
+  padding: 30px 5px;
 
   max-width: 1368px;
   animation: fadein 0.25s ease-in;
@@ -25,7 +24,7 @@
   justify-content: center;
 
   &__icon {
-    fill: var(--font-color-base);
+    fill: var(--font-color-i-base-darker);
 
     &.back {
       &:hover {
@@ -45,10 +44,10 @@
 
   &__text {
     font-size: 1.8rem;
-    font-weight: 300;
+    font-weight: 500;
     opacity: 0.5;
     transition: all 0.2s var(--transition-base-type);
-    color: var(--font-color-base-darker);
+    color: var(--font-color-i-base-darker);
   }
 
   &:hover {
@@ -67,7 +66,6 @@
   height: 40px;
   align-items: center;
   justify-content: space-between;
-  font-weight: 300;
   font-size: clamp(1rem, 10vw, 2rem);
   margin: 0 auto;
 
@@ -75,7 +73,8 @@
 
   &__header {
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: 700;
+    color: var(--font-color-i-base-darker);
   }
 }
 
@@ -95,7 +94,8 @@
   align-items: center;
   justify-content: center;
   font-size: clamp(1rem, 10vw, 1.5rem);
-  color: var(--font-color-base-darker);
+  color: var(--font-color-i-base);
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {

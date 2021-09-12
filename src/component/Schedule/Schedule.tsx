@@ -29,14 +29,14 @@ const day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Schedule: FC<Props> = (props) => {
-  // const { initApp } = useApplication()
+  const { groupNow } = useApplication()
   const { isLoading, schedule, getSchedule } = useSchedule()
   const schedulePair = (schedule: ScheduleT[], dayName: string): ScheduleT[] =>
     schedule.filter((x) => x.dayName === dayName)
 
   useEffect(() => {
-    getSchedule()
-  }, [])
+    getSchedule(groupNow)
+  }, [groupNow])
 
   if (!isLoading)
     return (

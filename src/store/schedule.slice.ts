@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 
-import { Schedule, ScheduleState } from '../types'
+import { Group, Schedule, ScheduleState } from '../types'
 
 const initialState: ScheduleState = {
   isLoading: false,
@@ -28,11 +28,11 @@ export const { reqeustShedule, receiveShedule } = scheduleSlice.actions
 export default scheduleSlice.reducer
 
 // Action
-export function getSchedule() {
+export function getSchedule(groups: Group) {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
       dispatch(reqeustShedule())
-      const { data } = await axios.get('http://localhost:8081/timetable')
+      const { data } = await axios.get(`http://localhost:8081/timetable/${groups.name}`)
       dispatch(receiveShedule(data))
     } catch (e) {
       console.log('getSchedule', e)
