@@ -1,18 +1,14 @@
 import './GroupSelector.scss'
 import React, { FC, useState } from 'react'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormControl from '@material-ui/core/FormControl'
-import Select from '@material-ui/core/Select'
+
 import cn from 'classnames'
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
-import { ReactComponent as Schedule } from '../../../utils/img/schedule.svg'
-import { ReactComponent as Dashboard } from '../../../utils/img/dashboard.svg'
-import { Link } from 'react-router-dom'
 
-// Utils
-import { useStylesGroup } from '../../../utils/styleui'
+// Custom hooks
+import { useApplication } from '../../../hook/useApplication'
+import { Group } from '../../../types'
 
 // Interface
 interface Props {}
@@ -20,48 +16,61 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const GroupSelector: FC<Props> = (props) => {
-  const classes = useStylesGroup()
+  const { isGroupSelectorOpen, groups, groupNow, changeGroup, openGroupSelector, closeGroupSelector } = useApplication()
 
-  const [state, setState] = useState(false)
-
-  const [group, setGroup] = React.useState<any>(groups[0].id)
-  const [open, setOpen] = React.useState(false)
-
-  const handleChangeGroup = (event: React.ChangeEvent<any>) => {
-    setGroup(event.target.value)
+  const handleClickMenu = () => {
+    isGroupSelectorOpen ? closeGroupSelector() : openGroupSelector()
   }
 
-  const handleClose = () => {
-    setOpen(false)
+  const handleClickGroup = (group: Group) => {
+    changeGroup(group)
+    closeGroupSelector()
   }
 
-  const handleOpen = () => {
-    setOpen(true)
+  const uniqueGroups = () => {
+    let arr: any[] = []
+    groups.forEach((x: any) => {
+      const g = x.name?.split('-')
+      if (arr.find((x) => x === g[0]) === undefined && g[0] !== 'Неизвестая группа') arr.push(g[0])
+    })
+    return arr
+  }
+
+  const getGroups = (groupName: string) => {
+    return groups.filter((x: any) => {
+      const g = x.name?.split('-')
+      return g[0] === groupName
+    })
   }
 
   return (
-    <div className="group-selector">
-      <FormControl classes={{ root: classes.root }}>
-        <Select open={open} onClose={handleClose} onOpen={handleOpen} value={group} onChange={handleChangeGroup}>
-          {groups.map((val, key) => {
-            return <MenuItem value={val.id}>{val.name}</MenuItem>
-          })}
-        </Select>
-      </FormControl>
-      {/* <div onMouseLeave={(e: any) => setState(false)} onMouseEnter={(e: any) => setState(true)} className="aside">
-        <nav className="nav-side">
-          <Link onClick={(e: any) => setState(false)} to={'/schedule'} className="nav-side__item link">
-            <Schedule className="nav-side__icon" />
-            <div className="nav-side__text">Расписание</div>
-          </Link>
-          <Link onClick={(e: any) => setState(false)} to={'/disciplines'} className="nav-side__item link">
-            <Dashboard className="nav-side__icon" />
-            <div className="nav-side__text">Предметы</div>
-          </Link>
-        </nav>
+    <>
+      <div className={cn('group-selector', { active: isGroupSelectorOpen })} onClick={handleClickMenu}>
+        <span>{groupNow.name}</span>
       </div>
-      <div className={cn('background-blur', { active: state })}></div> */}
-    </div>
+
+      <div className={cn('group-selector-background', { active: isGroupSelectorOpen })}>
+        <div className="group-selector-menu">
+          {uniqueGroups().map((x, key) => {
+            return (
+              <div key={key} className="group-selector-menu__content">
+                <span>{x}</span>
+                <ul>
+                  {getGroups(x).map((y) => {
+                    return <li onClick={(e) => handleClickGroup(y)}>{y.name}</li>
+                  })}
+                </ul>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      <div
+        onClick={handleClickMenu}
+        className={cn('group-selector-background-blur', { active: isGroupSelectorOpen })}
+      />
+    </>
   )
 }
 

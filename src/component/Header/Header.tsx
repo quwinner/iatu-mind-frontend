@@ -8,6 +8,7 @@ import cn from 'classnames'
 import Aside from './Aside/Aside'
 import Profile from './Profile/Profile'
 import GroupSelector from './GroupSelector/GroupSelector'
+import SearchBar from './SearchBar/SearchBar'
 
 import { ReactComponent as Logo } from '../../utils/img/logo.svg'
 
@@ -23,6 +24,7 @@ const Header: FC<Props> = (props) => {
       <div className="header__tab">
         Расписание {/* Это стейтовое значение будет меняться в зависимости от вкладки */}
       </div>
+      <SearchBar />
       <GroupSelector /> {/* Cringe MUST BE REwoRKED*/}
       <Profile />
     </header>

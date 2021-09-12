@@ -1,14 +1,43 @@
 // =======================================================================================
+// Store
+
+// =======================================================================================
 // App
 // =======================================================================================
 
 export interface AppState {
   isLoading: boolean
+  isAsideOpen: boolean
+  isGroupSelectorOpen: boolean
+
+  groups: Group[]
+  groupNow: Group
+
+  periods: Period[]
+  periodNow: Period
+
   error: string | null
 }
 
 // =======================================================================================
 // Schedule
+// =======================================================================================
+
+export interface ScheduleState {
+  isLoading: boolean
+  error: string | null
+  schedule: Schedule[]
+}
+
+// =======================================================================================
+// Root
+// =======================================================================================
+
+// export interface RootState {
+//   appState: AppState
+//   scheduleState: ScheduleState
+// }
+
 // =======================================================================================
 
 export interface Schedule {
@@ -23,17 +52,13 @@ export interface Schedule {
   subgroup: string
 }
 
-export interface ScheduleState {
-  isLoading: boolean
-  error: string | null
-  schedule: Schedule[]
+export interface Group {
+  id: number
+  name: string
 }
 
-// =======================================================================================
-// Store
-// =======================================================================================
-
-// export interface RootState {
-//   appState: AppState
-//   scheduleState: ScheduleState
-// }
+export interface Period {
+  id: number
+  year: Date
+  half: number
+}
