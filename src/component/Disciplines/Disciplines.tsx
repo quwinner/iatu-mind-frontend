@@ -6,6 +6,10 @@ import Gray from '../../utils/img/gray_blur.png'
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
 import DisciplinesItem from './DisciplinesItem/DisciplinesItem'
+import { useApplication } from '../../hook/useApplication'
+
+// Utils
+import { Period } from '../../types'
 
 // Interface
 interface Props {}
@@ -13,6 +17,12 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Disciplines: FC<Props> = (props) => {
+  const { changePeriod } = useApplication()
+
+  const handleClickChangePeriod = (period: Period) => {
+    changePeriod(period)
+  }
+
   return (
     <section className="disciplines unselectable">
       <div

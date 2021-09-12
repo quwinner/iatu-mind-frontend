@@ -2,7 +2,7 @@
 /* ////////////////////////////////////////////////////// */
 
 .profile-header {
-  padding-right: 15px;
+  padding: 0 15px;
 
   display: flex;
   align-items: center;
@@ -10,6 +10,8 @@
   margin-left: auto;
   z-index: 1;
   color: var(--font-color-base);
+
+  height: 100%;
 }
 
 .profile-header-img {

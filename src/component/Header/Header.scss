@@ -2,7 +2,7 @@
 /* ////////////////////////////////////////////////////// */
 
 .header {
-  position: fixed;
+  position: absolute;
   z-index: 3;
 
   display: flex;
@@ -148,9 +148,9 @@
 
 @media screen and (max-width: 768px) {
   .header {
-    border-bottom: 1px solid var(--border-base-color);
-    background: var(--background-color-highlight);
-    box-shadow: 0 2px 8px 2px var(--background-content);
+    // border-bottom: 1px solid var(--border-base-color);
+    // background: var(--background-color-highlight);
+    // box-shadow: 0 2px 8px 2px var(--background-content);
   }
 }
 
