@@ -14,29 +14,34 @@ import axios from 'axios'
 
 // Redux
 import { useDispatch } from 'react-redux'
-import { getSchedule } from '../../store/schedule.slice'
 import { useApplication } from '../../hook/useApplication'
 import { useSchedule } from '../../hook/useSchedule'
 import Loading from '../Loading/Loading'
 import { Schedule as ScheduleT } from '../../types'
 import fixDayName from '../../utils/fixDayName'
+import convertDate, { convertDateTime } from '../../utils/convertDate'
 
 // Interface
 interface Props {}
 
-const day = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const day = [1, 2, 3, 4, 5, 6]
 
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Schedule: FC<Props> = (props) => {
-  // const { initApp } = useApplication()
-  const { isLoading, schedule, getSchedule } = useSchedule()
-  const schedulePair = (schedule: ScheduleT[], dayName: string): ScheduleT[] =>
-    schedule.filter((x) => x.dayName === dayName)
+  const { groupNow } = useApplication()
+  const { isLoading, daySkip, schedule, getScheduleWeek, setDaySkip } = useSchedule()
+
+  const schedulePair = (schedule: ScheduleT[], day: number): ScheduleT[] =>
+    schedule.filter((x) => dayjs(x?.date).day() === day)
+
+  const handleOnClickSkip = (ammount: number) => {
+    setDaySkip(daySkip + ammount)
+  }
 
   useEffect(() => {
-    getSchedule()
-  }, [])
+    getScheduleWeek(groupNow, dayjs(new Date()).add(daySkip, 'day').format('YYYY.MM.DD'))
+  }, [groupNow, daySkip])
 
   if (!isLoading)
     return (
@@ -50,11 +55,20 @@ const Schedule: FC<Props> = (props) => {
       <div className="schedule-date">
         <div className="schedule-arrow-pagination">
           <Arrow className="schedule-arrow-pagination__icon back" />
-          <div className="schedule-arrow-pagination__text">Предыдущая неделя</div>
+          <div onClick={(e) => handleOnClickSkip(-7)} className="schedule-arrow-pagination__text">
+            Предыдущая неделя
+          </div>
         </div>
-        <div className="schedule-date__header">6 Сентября - 10 Сентября</div>
+        <div className="schedule-date__header">
+          {dayjs(schedule[0]?.date).locale(loc).format('D MMMM')} -{' '}
+          {dayjs(schedule[schedule.length - 1]?.date)
+            .locale(loc)
+            .format('D MMMM')}
+        </div>
         <div className="schedule-arrow-pagination">
-          <div className="schedule-arrow-pagination__text">Следующая неделя</div>
+          <div onClick={(e) => handleOnClickSkip(7)} className="schedule-arrow-pagination__text">
+            Следующая неделя
+          </div>
           <Arrow className="schedule-arrow-pagination__icon next" />
         </div>
       </div>
@@ -64,6 +78,10 @@ const Schedule: FC<Props> = (props) => {
         {day.map((val, key) => {
           return <ScheduleItem key={key} schedule={schedulePair(schedule, val)} />
         })}
+        {/* {day.map((val, key) => {
+          console.log(val, schedulePair(schedule, val))
+          return <div>a</div>
+        })} */}
       </div>
     </section>
   )

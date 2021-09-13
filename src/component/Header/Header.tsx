@@ -10,7 +10,10 @@ import Profile from './Profile/Profile'
 import GroupSelector from './GroupSelector/GroupSelector'
 import SearchBar from './SearchBar/SearchBar'
 
-import { ReactComponent as Logo } from '../../utils/img/logo.svg'
+import { ReactComponent as Menu } from '../../utils/img/menu.svg'
+
+// Custom hooks
+import { useApplication } from '../../hook/useApplication'
 
 // Interface
 interface Props {}
@@ -18,14 +21,21 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Header: FC<Props> = (props) => {
+  const { isAsideOpen, openAside, closeAside } = useApplication()
+
   return (
     <header className="header unselectable">
-      <Logo className="header__btn" />
+      <Menu
+        onClick={(e) => {
+          isAsideOpen ? closeAside() : openAside()
+        }}
+        className="header__menu"
+      />
       <div className="header__tab">
         Расписание {/* Это стейтовое значение будет меняться в зависимости от вкладки */}
       </div>
       <SearchBar />
-      <GroupSelector /> {/* Cringe MUST BE REwoRKED*/}
+      <GroupSelector />
       <Profile />
     </header>
   )
