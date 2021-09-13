@@ -14,6 +14,8 @@
 
   max-width: 1368px;
   animation: fadein 0.25s ease-in;
+
+  transition: all 0.2s ease-in;
 }
 
 .schedule-arrow-pagination {
@@ -87,6 +89,7 @@
   flex-wrap: wrap;
   gap: 50px;
   padding-bottom: 100px;
+  transition: all 0.2s ease-in;
 }
 
 .schedule-today {
