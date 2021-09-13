@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 import { AppState, Group, Period } from '../types'
 
-import { GET_ALL_GROUPS } from '../component/Graphql/Queries'
+import { GET_ALL_GROUPS, GET_ALL_PERIODS } from '../component/Graphql/Queries'
 import { apolloClient } from '..'
 
 const initialState: AppState = {
@@ -22,6 +22,12 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    openAside: (state) => {
+      state.isAsideOpen = true
+    },
+    closeAside: (state) => {
+      state.isAsideOpen = false
+    },
     openGroupSelector: (state) => {
       state.isGroupSelectorOpen = true
     },
@@ -43,16 +49,22 @@ const appSlice = createSlice({
   },
 })
 
-export const { openGroupSelector, closeGroupSelector, getAllGroups, setGroup, getAllPeriods, setPeriod } =
-  appSlice.actions
+export const {
+  openAside,
+  closeAside,
+  openGroupSelector,
+  closeGroupSelector,
+  getAllGroups,
+  setGroup,
+  getAllPeriods,
+  setPeriod,
+} = appSlice.actions
 export default appSlice.reducer
 
 // Action
 export function initApp() {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
-      // const { data } = lazyQuery(GET_ALL_GROUPS)
-      // dispatch(getAllGroups(data))
       const { data } = await apolloClient.query({
         query: GET_ALL_GROUPS,
       })
@@ -73,7 +85,12 @@ export function initApp() {
       dispatch(setGroup(groups.find((x: any) => x.id === group)))
       dispatch(getAllGroups(groups))
 
-      // dispatch(setPeriod(groups.find((x: any) => x.id === group)))
+      const periods = await apolloClient.query({
+        query: GET_ALL_PERIODS,
+      })
+
+      dispatch(setPeriod(periods.data.periods.find((x: any) => x.id === period)))
+      dispatch(getAllPeriods(periods.data.periods))
 
       console.log('initApp')
     } catch (e) {

@@ -12,11 +12,7 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SearchBar: FC<Props> = (props) => {
-  return (
-    <div className="search-bar">
-      <div></div>
-    </div>
-  )
+  return <div className="search-bar"></div>
 }
 
 export default SearchBar

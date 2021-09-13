@@ -11,10 +11,10 @@ import { bindActionCreators } from 'redux'
 // Selector
 export const useSchedule = () => {
   const dispatch = useDispatch()
-  const { getSchedule } = bindActionCreators(ActionCreators, dispatch)
+  const { getScheduleWeek, getScheduleDay, setDaySkip, getNextPair } = bindActionCreators(ActionCreators, dispatch)
 
-  const { isLoading, schedule, error } = useTypesSelector((state) => state.scheduleState)
-  return { isLoading, schedule, error, getSchedule }
+  const { isLoading, daySkip, nextPair, schedule, error } = useTypesSelector((state) => state.scheduleState)
+  return { isLoading, daySkip, nextPair, schedule, error, getScheduleWeek, getScheduleDay, setDaySkip, getNextPair }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
