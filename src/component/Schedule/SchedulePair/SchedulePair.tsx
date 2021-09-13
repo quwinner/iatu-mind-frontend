@@ -18,6 +18,14 @@ interface Props {
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SchedulePair: FC<Props> = (props) => {
+  if (!props.schedule[0]?.timeStart) {
+    return (
+      <div className="schedule-pair">
+        <span className="schedule-pair__none">Пар нету</span>
+      </div>
+    )
+  }
+
   return (
     <div className={cn('schedule-pair', { extend: props.extend })}>
       <div className="schedule-pair__time">
@@ -56,7 +64,7 @@ const SchedulePair: FC<Props> = (props) => {
             </div>
           </div>
         ) : (
-          props.schedule.map((val, key) => {
+          props.schedule.map((val, key, arr) => {
             return (
               <>
                 <div key={key}>
@@ -84,7 +92,7 @@ const SchedulePair: FC<Props> = (props) => {
                   </div>
                 </div>
 
-                {key !== props.schedule.length - 1 && <div className="schedule-pair__hr h" />}
+                {key !== arr.length - 1 && <div className="schedule-pair__hr h" />}
               </>
             )
           })
@@ -95,54 +103,3 @@ const SchedulePair: FC<Props> = (props) => {
 }
 
 export default SchedulePair
-
-// <div>
-//         <div className="schedule-pair__hr v" />
-//         <div className="schedule-pair__type type-content">
-//           <div className="type-content__item">
-//             <div className="type-content__icon">1</div>
-//             <div className="type-content__info">подгруппа</div>
-//           </div>
-//           <div className="type-content__item">
-//             <div className="type-content__icon">D</div>
-//             <div className="type-content__info">Discord</div>
-//           </div>
-//           <div className={cn('type-content__item additional', { extend: props.extend })}>
-//             <div className="type-content__audit">124</div>
-//             <div className="type-content__info">Кабинет</div>
-//           </div>
-//         </div>
-//         <div className="schedule-pair__hr v" />
-//         <div className="schedule-pair__info">
-//           <div className="schedule-pair__name">История</div>
-//           <div className={cn('schedule-pair__teacher', { extend: props.extend })}>
-//             <div className="schedule-pair__hr h" />
-//             Загуральская
-//           </div>
-//         </div>
-//       </div>
-//       <div>
-//         <div className="schedule-pair__hr v" />
-//         <div className="schedule-pair__type type-content">
-//           <div className="type-content__item">
-//             <div className="type-content__icon">1</div>
-//             <div className="type-content__info">подгруппа</div>
-//           </div>
-//           <div className="type-content__item">
-//             <div className="type-content__icon">D</div>
-//             <div className="type-content__info">Discord</div>
-//           </div>
-//           <div className={cn('type-content__item additional', { extend: props.extend })}>
-//             <div className="type-content__audit">124</div>
-//             <div className="type-content__info">Кабинет</div>
-//           </div>
-//         </div>
-//         <div className="schedule-pair__hr v" />
-//         <div className="schedule-pair__info">
-//           <div className="schedule-pair__name">История</div>
-//           <div className={cn('schedule-pair__teacher', { extend: props.extend })}>
-//             <div className="schedule-pair__hr h" />
-//             Загуральская
-//           </div>
-//         </div>
-//       </div>
