@@ -1,13 +1,21 @@
 import './Home.scss'
 import React, { FC } from 'react'
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Import Component
+import Loading from '../Loading/Loading'
+
 // Interface
 interface Props {}
 
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Home: FC<Props> = (props) => {
-  return <section className="home"></section>
+  return (
+    <section className="home">
+      <Loading />
+    </section>
+  )
 }
 
 export default Home

@@ -6,12 +6,14 @@ import loc from 'dayjs/locale/ru'
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
+import { ReactComponent as Ticket } from '../../../utils/img/ticket.svg'
+
 import SchedulePair from '../SchedulePair/SchedulePair'
-import { Schedule } from '../../../types'
-import uniquePair from '../../../utils/uniquePair'
-import fixDayName from '../../../utils/fixDayName'
 
 // Utils
+import uniquePair from '../../../utils/uniquePair'
+import fixDayName from '../../../utils/fixDayName'
+import { Schedule } from '../../../types'
 
 // Interface
 interface Props {
@@ -26,6 +28,7 @@ const ScheduleItem: FC<Props> = (props) => {
   const date = props.schedule[0]?.date
 
   const optionsPair = useMemo(() => uniquePair(props.schedule), [props.schedule])
+
   return (
     <div
       onClick={(e) => setExtend(!extend)}
@@ -40,11 +43,14 @@ const ScheduleItem: FC<Props> = (props) => {
           {date ? fixDayName(dayjs(date).locale(loc).format('dddd')) : '---'}
         </div>
         <div className="schedule-header__date">{date ? dayjs(date).locale(loc).format('D MMMM') : '---'}</div>
+        <div className="schedule-header__ticket">
+          <Ticket />
+        </div>
       </div>
       {optionsPair.map((x, key) => {
         return (
           <>
-            <hr className="schedule-pair__hr h" />
+            <hr key={key} className="schedule-pair__hr h" />
             <SchedulePair
               key={key}
               extend={extend}

@@ -18,6 +18,8 @@ interface Props {
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SchedulePair: FC<Props> = (props) => {
+  // console.log(props.schedule)
+
   if (!props.schedule[0]?.timeStart) {
     return (
       <div className="schedule-pair">
