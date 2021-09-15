@@ -7,7 +7,7 @@ import { ReactComponent as LoadingIcon } from '../../utils/img/loading.svg'
 
 const Loading: FC<any> = () => {
   return (
-    <div className="loader">
+    <div className="loader unselectable">
       <span>
         <div>T</div>
       </span>

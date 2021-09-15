@@ -45,9 +45,9 @@ const Schedule: FC<Props> = (props) => {
 
   if (!isLoading)
     return (
-      <div>
+      <section className="schedule unselectable load">
         <Loading />
-      </div>
+      </section>
     )
 
   return (
