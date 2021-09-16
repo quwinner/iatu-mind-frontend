@@ -13,8 +13,19 @@ export const useSchedule = () => {
   const dispatch = useDispatch()
   const { getScheduleWeek, getScheduleDay, setDaySkip, getNextPair } = bindActionCreators(ActionCreators, dispatch)
 
-  const { isLoading, daySkip, nextPair, schedule, error } = useTypesSelector((state) => state.scheduleState)
-  return { isLoading, daySkip, nextPair, schedule, error, getScheduleWeek, getScheduleDay, setDaySkip, getNextPair }
+  const { isLoading, daySkip, nextPair, nowPair, schedule, error } = useTypesSelector((state) => state.scheduleState)
+  return {
+    isLoading,
+    daySkip,
+    nextPair,
+    nowPair,
+    schedule,
+    error,
+    getScheduleWeek,
+    getScheduleDay,
+    setDaySkip,
+    getNextPair,
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

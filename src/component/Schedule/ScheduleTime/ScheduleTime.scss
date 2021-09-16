@@ -13,16 +13,39 @@
   font-weight: 500;
   color: var(--font-color-i-base);
 
+  &__hr {
+    min-height: 2px;
+
+    width: 20%;
+
+    background-color: var(--border-base-color);
+  }
+
   &__header {
     display: flex;
-    gap: 5px;
+    gap: 1px;
+    padding: 1px;
+  }
+}
+
+.schedule-time-span {
+  &.base {
+    color: var(--font-color-i-base);
+  }
+  &.darker {
+    color: var(--font-color-i-base-darker);
+  }
+
+  &.time {
+    min-width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 
 .schedule-next {
   border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
   background-color: var(--background-content);
   box-shadow: 0 2px 8px 2px var(--shadow-color-active);
   max-height: 0px;
@@ -30,6 +53,9 @@
   pointer-events: none;
 
   &.extend {
+    padding: 5px;
+    margin: 5px;
+
     max-height: 250px;
     opacity: 1;
     pointer-events: all;

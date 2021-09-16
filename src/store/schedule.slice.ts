@@ -9,7 +9,9 @@ const initialState: ScheduleState = {
 
   daySkip: 0,
 
+  nowPair: [],
   nextPair: [],
+
   schedule: [],
 }
 
@@ -31,10 +33,13 @@ const scheduleSlice = createSlice({
     setNextPair: (state, { payload }: PayloadAction<Schedule[]>) => {
       state.nextPair = payload
     },
+    setNowPair: (state, { payload }: PayloadAction<Schedule[]>) => {
+      state.nowPair = payload
+    },
   },
 })
 
-export const { reqeustShedule, receiveShedule, setDaySkip, setNextPair } = scheduleSlice.actions
+export const { reqeustShedule, receiveShedule, setDaySkip, setNextPair, setNowPair } = scheduleSlice.actions
 export default scheduleSlice.reducer
 
 // Action
@@ -77,12 +82,32 @@ export function getScheduleDay(group: Group, day: string) {
 export function getNextPair(group: Group) {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/timetable/next`, {
+      let nextUrl = `${process.env.REACT_APP_BACKEND_URL}/api/timetable/next`
+      let nowUrl = `${process.env.REACT_APP_BACKEND_URL}/api/timetable/now`
+
+      const requestNext = axios.get<any[]>(nextUrl, {
         params: {
           group: group.name,
         },
       })
-      dispatch(setNextPair(data))
+
+      const requestNow = axios.get<any[]>(nowUrl, {
+        params: {
+          group: group.name,
+        },
+      })
+
+      axios.all([requestNext, requestNow]).then(
+        axios.spread((...responses) => {
+          const nextPair = responses[0]?.data
+          const nowPair = responses[1]?.data
+
+          dispatch(setNextPair(nextPair))
+          dispatch(setNowPair(nowPair))
+
+          return
+        })
+      )
     } catch (e) {
       console.log('setNextPair', e)
     } finally {
