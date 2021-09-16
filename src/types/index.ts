@@ -29,7 +29,9 @@ export interface ScheduleState {
 
   daySkip: number
 
+  nowPair: Schedule[]
   nextPair: Schedule[]
+
   schedule: Schedule[]
 }
 

@@ -1,4 +1,6 @@
 {
+  "extends": "./paths.json",
+  "include": ["src"],
   "compilerOptions": {
     "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -15,6 +17,5 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
-  },
-  "include": ["src"]
+  }
 }

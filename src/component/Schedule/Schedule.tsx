@@ -45,19 +45,17 @@ const Schedule: FC<Props> = (props) => {
 
   if (!isLoading)
     return (
-      <div>
+      <section className="schedule unselectable load">
         <Loading />
-      </div>
+      </section>
     )
 
   return (
     <section className="schedule unselectable">
       <div className="schedule-date">
-        <div className="schedule-arrow-pagination">
+        <div onClick={(e) => handleOnClickSkip(-7)} className="schedule-arrow-pagination">
           <Arrow className="schedule-arrow-pagination__icon back" />
-          <div onClick={(e) => handleOnClickSkip(-7)} className="schedule-arrow-pagination__text">
-            Предыдущая неделя
-          </div>
+          <div className="schedule-arrow-pagination__text">Предыдущая неделя</div>
         </div>
         <div className="schedule-date__header">
           {dayjs(schedule[0]?.date).locale(loc).format('D MMMM')} -{' '}
@@ -65,23 +63,17 @@ const Schedule: FC<Props> = (props) => {
             .locale(loc)
             .format('D MMMM')}
         </div>
-        <div className="schedule-arrow-pagination">
-          <div onClick={(e) => handleOnClickSkip(7)} className="schedule-arrow-pagination__text">
-            Следующая неделя
-          </div>
+        <div onClick={(e) => handleOnClickSkip(7)} className="schedule-arrow-pagination">
+          <div className="schedule-arrow-pagination__text">Следующая неделя</div>
           <Arrow className="schedule-arrow-pagination__icon next" />
         </div>
       </div>
-      <div className="schedule-today">Сегодня {fixDayName(dayjs(Date.now()).locale(loc).format('D MMMM'))}</div>
+      <div className="schedule-today">Сегодня {fixDayName(dayjs(Date.now()).locale(loc).format('dddd D MMMM'))}</div>
       <ScheduleTime />
       <div className="schedule-content">
         {day.map((val, key) => {
           return <ScheduleItem key={key} schedule={schedulePair(schedule, val)} />
         })}
-        {/* {day.map((val, key) => {
-          console.log(val, schedulePair(schedule, val))
-          return <div>a</div>
-        })} */}
       </div>
     </section>
   )
