@@ -8,3 +8,13 @@ export const GET_ALL_GROUPS = gql`
     }
   }
 `
+
+export const GET_ALL_PERIODS = gql`
+  query {
+    periods {
+      id
+      year
+      half
+    }
+  }
+`

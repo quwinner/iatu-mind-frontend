@@ -5,11 +5,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: first baseline;
 
   min-height: 60px;
   height: 100%;
   width: 100%;
+
+  &__none {
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+  }
 
   &__item {
     display: flex;
@@ -23,9 +28,10 @@
   }
 
   &__time {
+    min-width: 40px;
     * {
       color: var(--font-color-base-darker);
-      font-size: 1.6rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -41,10 +47,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
         flex-direction: row;
 
-        font-size: 1.2rem;
+        max-width: 95px;
+
+        font-size: 1.1rem;
         height: 25px;
         max-height: 25px;
 
@@ -68,9 +75,24 @@
         color: var(--font-color-base-darker);
         text-align: center;
         border-radius: 5px;
-        width: 22px;
-        height: 22px;
+        min-width: 23px;
+        min-height: 23px;
         background-color: var(--background-content);
+        font-size: 1.1rem;
+        font-weight: 700;
+
+        > * {
+          width: 20px;
+          height: 20px;
+
+          fill: var(--font-color-base-darker);
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        line-height: 1;
 
         display: flex;
         align-items: center;
@@ -88,6 +110,13 @@
       &__audit {
         font-weight: 700;
         color: var(--font-color-base-darker);
+
+        > * {
+          width: 20px;
+          height: 20px;
+
+          fill: var(--font-color-base-darker);
+        }
       }
     }
   }
@@ -121,6 +150,7 @@
 
   &__name {
     font-size: 1.5rem;
+    color: var(--font-color-base);
   }
 
   &__teacher {
@@ -155,9 +185,53 @@
   }
 
   transition: all 0.1s ease-in;
+  animation: fadein 0.25s ease-in;
 }
 
-// @media screen and (max-width: 768px) {
-// }
+@media screen and (max-width: 768px) {
+  .schedule-pair {
+    &__time {
+      min-width: 32px;
+    }
+
+    &__type {
+      .type-content {
+        &__item {
+          max-width: 85px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .schedule-pair {
+    &__time {
+      min-width: 30px;
+      font-size: 1.3rem;
+    }
+
+    &__type {
+      .type-content {
+        &__item {
+          font-size: 1.1rem;
+          max-width: 80px;
+        }
+
+        &__icon {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    &__name {
+      font-size: 1.6rem;
+    }
+
+    &__teacher {
+      font-size: 1.4rem;
+    }
+  }
+}
 
 /* ////////////////////////////////////////////////////// */
