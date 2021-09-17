@@ -39,10 +39,10 @@
     animation: footer-move 25s ease-in-out infinite;
 
     background-size: 500%;
-    top: -5px;
+    top: -1px;
     left: 0;
     width: 100%;
-    height: calc(100% + 5px);
+    height: calc(100% + 1px);
     filter: blur(10px);
 
     z-index: -1;

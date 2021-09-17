@@ -51,12 +51,12 @@ const ScheduleItem: FC<Props> = (props) => {
             }}
             className="schedule-header__ticket"
           >
-            <Ticket
+            {/* <Ticket
               onClick={(e: any) => {
                 if (ticketShow) return
                 setTicketShow(true)
               }}
-            />
+            /> */}
           </div>
         </div>
         {optionsPair.map((x, key) => {

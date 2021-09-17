@@ -14,33 +14,68 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SearchBar: FC<Props> = (props) => {
-const [state, setState] = useState<boolean>(false)
+  const [state, setState] = useState<boolean>(false)
+  const [various, setVarious] = useState<number>(0)
 
   return (
-    <div className="search">
-      <div className="search-bar">
-        <input
-          type="text"
-          className={cn('search-bar__input', { active: state })}
-          placeholder="Найти..."
-          onClick={() => setState(!state)}
-        />
-        <div className="search-bar__loupe">
-          <Search />
-        </div>
-        <section onClick={() => setState(false)} className={cn('search-bar__section ', { active: state })}>
-          {/* Я конечно не уверен, но мне кажется он выводит скрывающийся блок 
-              так криво потому что там кнопку не видно из за бекэнда */}
-          <div className="search-info">
-            <div className="search-info___chapter">Расписание</div>
-            <div>Профиль</div>
-            <div>Убить себя</div>
-            <div>Убить преподавателя</div>
+    <>
+      <div className="search">
+        <div className="search-bar">
+          <input
+            type="text"
+            className={cn('search-bar__input', { active: state })}
+            placeholder="Найти..."
+            onClick={(e) => {
+              if (!state) setState(!state)
+            }}
+          />
+          <Search onClick={() => setState(!state)} className="search-bar__icon" />
+          <div onClick={() => setState(false)} className={cn('search-bar__variuos', { active: state })}>
+            <ul className="search-bar option-content">
+              {arr.map((val, key) => {
+                return (
+                  <li
+                    onClick={(e) => {
+                      setVarious(val.index)
+                      e.stopPropagation()
+                    }}
+                    className={cn('option-content__item', { active: key + 1 === various })}
+                  >
+                    {val.name}
+                  </li>
+                )
+              })}
+            </ul>
           </div>
-        </section>
+        </div>
       </div>
-    </div>
+      <div onClick={(e) => setState(false)} className={cn('search-bar-background-blur', { active: state })} />
+    </>
   )
 }
 
 export default SearchBar
+
+const arr: Various[] = [
+  {
+    index: 1,
+    name: 'Расписание',
+  },
+  {
+    index: 2,
+    name: 'Профиль',
+  },
+  {
+    index: 3,
+    name: 'Убить себя',
+  },
+  {
+    index: 4,
+    name: 'Убить преподавателя',
+  },
+]
+
+interface Various {
+  index: number
+  name: string
+}
