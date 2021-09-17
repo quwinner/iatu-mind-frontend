@@ -14,7 +14,7 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SearchBar: FC<Props> = (props) => {
-  const [state, setState] = useState<boolean>(false)
+const [state, setState] = useState<boolean>(false)
 
   return (
     <div className="search">

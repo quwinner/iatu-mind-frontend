@@ -6,10 +6,13 @@ import { Route, Switch } from 'react-router-dom'
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import Header from './Header/Header'
 import Aside from './Header/Aside/Aside'
+import Footer from './Footer/Footer'
 
 import Home from './Home/Home'
 import Schedule from './Schedule/Schedule'
 import Disciplines from './Disciplines/Disciplines'
+
+// Custom hooks
 import { useApplication } from '../hook/useApplication'
 
 // Component
@@ -25,7 +28,7 @@ const App: FC<any> = () => {
   return (
     <>
       <Header />
-      {/* <Aside /> */}
+      <Aside />
       <main className="main">
         <Switch>
           <Route exact path="/" component={Home} />
@@ -33,6 +36,7 @@ const App: FC<any> = () => {
           <Route exact path="/schedule" component={Schedule} />
         </Switch>
       </main>
+      <Footer />
     </>
   )
 }

@@ -6,6 +6,8 @@
   display: flex;
   flex-direction: column;
 
+  margin: 0 5px;
+
   gap: 5px;
 
   font-size: clamp(1rem, 10vw, 2rem);
@@ -54,11 +56,41 @@
     font-size: 1.25rem;
     color: var(--font-color-base-darker);
   }
+
+  &__ticket {
+    height: 100%;
+    margin-left: auto;
+
+    > * {
+      fill: rgba(255, 81, 0, 0.589);
+
+      animation: pulse-ticket 2s linear infinite;
+    }
+  }
+
+  animation: fadein 0.25s ease-in;
 }
 
 .a {
   height: 100%;
 }
+
+@keyframes pulse-ticket {
+  0% {
+    transform: scale(1);
+    fill: rgba(255, 50, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.2);
+    fill: rgba(255, 50, 0, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    fill: rgba(255, 50, 0, 0.2);
+  }
+}
+
+/* ////////////////////////////////////////////////////// */
 
 @media screen and (max-width: 768px) {
   .schedule-item {

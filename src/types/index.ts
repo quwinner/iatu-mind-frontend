@@ -26,6 +26,12 @@ export interface AppState {
 export interface ScheduleState {
   isLoading: boolean
   error: string | null
+
+  daySkip: number
+
+  nowPair: Schedule[]
+  nextPair: Schedule[]
+
   schedule: Schedule[]
 }
 
@@ -41,7 +47,7 @@ export interface ScheduleState {
 // =======================================================================================
 
 export interface Schedule {
-  dayName: string
+  timeWait?: number
   date: string | Date
   timeStart: string
   timeStop: string
