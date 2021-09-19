@@ -20,6 +20,8 @@ const Profile: FC<Props> = () => {
   // const { removeUserSettings } = useSetUser()
   // const { isLoggedIn, userInfo } = useUser()
 
+  // const {} =
+
   const [state, setState] = useState<boolean>(false)
 
   // if (!isLoggedIn)

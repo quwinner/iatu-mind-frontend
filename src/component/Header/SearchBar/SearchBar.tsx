@@ -7,6 +7,7 @@ import cn from 'classnames'
 
 // Utils
 import { ReactComponent as Search } from '../../../utils/img/search_white.svg'
+import { ReactComponent as Clear } from '../../../utils/img/clear.svg'
 
 // Interface
 interface Props {}
@@ -14,8 +15,25 @@ interface Props {}
 // Component
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const SearchBar: FC<Props> = (props) => {
-  const [state, setState] = useState<boolean>(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
   const [various, setVarious] = useState<number>(0)
+  const [term, setTerm] = useState<string>('')
+
+  const handlerChangeText = (e: any) => {
+    setTerm(e.target.value)
+  }
+
+  const handlerClickClear = (e: any) => {
+    setVarious(0)
+  }
+
+  const handlerClickOpen = (e: any) => {
+    setIsOpen(true)
+  }
+
+  const handlerClickClose = (e: any) => {
+    setIsOpen(false)
+  }
 
   return (
     <>
@@ -23,14 +41,22 @@ const SearchBar: FC<Props> = (props) => {
         <div className="search-bar">
           <input
             type="text"
-            className={cn('search-bar__input', { active: state })}
-            placeholder="Найти..."
-            onClick={(e) => {
-              if (!state) setState(!state)
-            }}
+            className={cn('search-bar__input', { active: isOpen })}
+            placeholder="Поиск..."
+            onClick={handlerClickOpen}
+            onChange={handlerChangeText}
+            value={term}
           />
-          <Search onClick={() => setState(!state)} className="search-bar__icon" />
-          <div onClick={() => setState(false)} className={cn('search-bar__variuos', { active: state })}>
+          {various !== 0 ? (
+            <>
+              <div className="search-bar__category">{arr.find((x) => x.index === various)?.name}</div>
+              <Clear onClick={handlerClickClear} className="search-bar__icon" />
+            </>
+          ) : (
+            <Search onClick={handlerClickClose} className="search-bar__icon" />
+          )}
+
+          <div onClick={handlerClickClose} className={cn('search-bar__variuos', { active: isOpen })}>
             <ul className="search-bar option-content">
               {arr.map((val, key) => {
                 return (
@@ -49,7 +75,7 @@ const SearchBar: FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      <div onClick={(e) => setState(false)} className={cn('search-bar-background-blur', { active: state })} />
+      <div onClick={handlerClickClose} className={cn('search-bar-background-blur', { active: isOpen })} />
     </>
   )
 }

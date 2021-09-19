@@ -19,13 +19,13 @@
 
   z-index: 2;
 
-  max-width: 1000px;
+  max-width: 1368px;
 
   width: 100%;
   height: 100%;
 
   &__input {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     background-color: #3a3a3a;
     border-radius: 20px;
     border: 0px;
@@ -42,8 +42,8 @@
     &:focus {
       cursor: text;
       outline: none;
-      border: 0px solid var(--background-color-highlight);
-      box-shadow: 0 0 5px var(--background-color-highlight);
+      border: 0px solid var(--shadow-color-hover);
+      box-shadow: 0 0 5px var(--shadow-color-hover);
     }
   }
 
@@ -59,6 +59,28 @@
     fill: var(--icon-base-color);
   }
 
+  &__category {
+    position: absolute;
+    right: 45px;
+    height: 100%;
+    z-index: 2;
+
+    padding: 9px 0;
+
+    display: flex;
+    align-items: flex-end;
+    color: var(--font-color-base);
+    font-size: 1.5rem;
+    line-height: 1;
+
+    &::before {
+      content: 'поиск в';
+      color: var(--font-color-base-darker);
+      font-size: 1rem;
+      padding-right: 4px;
+    }
+  }
+
   &__variuos {
     position: absolute;
 
@@ -70,6 +92,8 @@
     min-height: 100px;
 
     padding-top: 30px;
+
+    font-weight: 500;
 
     margin-top: 20px;
     z-index: 0;
@@ -125,6 +149,7 @@
       transition: 0.5s all ease;
 
       &.active {
+        font-weight: 700;
         &::before {
           content: '';
           // color: var(--shadow-color-active);
@@ -166,8 +191,9 @@
   transition: all 0.2s ease-in;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .search-bar {
+    display: none;
   }
 }
 
