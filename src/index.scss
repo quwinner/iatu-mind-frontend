@@ -6,6 +6,8 @@
     'Segoe UI Symbol', 'Noto Color Emoji';
 
   --font-color-active: #3f7ee4;
+  --font-color-link: #70a1f0;
+  --font-color-link-hover: #4583e7;
 
   --font-color-base-darker: #aaaaaa;
   --font-color-base: #dddddd;
@@ -13,6 +15,11 @@
   --font-color-i-base-darker: #161616;
   --font-color-i-base: #383838;
 
+  --background-input: #3a3a3a;
+  --background-input-border: #575757;
+
+  --background-submit: #7289da;
+  --background-submit-darker: #5468b1;
   --background-color: #a7aaac;
   --background-color-highlight: #606868;
   --background-color-lighter: #303034;
@@ -24,7 +31,7 @@
 
   --shadow-color-base: rgb(15, 15, 15);
   --shadow-color-base-darker: rgba(40, 40, 40);
-  --shadow-color-active: rgb(46, 221, 206);
+  --shadow-color-active: rgb(46, 157, 221);
   --shadow-color-active-darker: rgba(40, 110, 220, 0.25);
   --shadow-color-hover: rgb(45, 45, 45);
 

@@ -23,7 +23,7 @@ const SchedulePair: FC<Props> = (props) => {
   if (!props.schedule[0]?.timeStart) {
     return (
       <div className="schedule-pair">
-        <span className="schedule-pair__none">Пар нету</span>
+        <span className="schedule-pair__none">Пар нет</span>
       </div>
     )
   }
