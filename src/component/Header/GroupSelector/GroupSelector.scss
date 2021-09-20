@@ -29,9 +29,11 @@
   opacity: 0;
 
   pointer-events: none;
+  transform: translateY(-1000px);
 
   &.active {
     pointer-events: all;
+    transform: translateY(0px);
 
     opacity: 1;
     transition: all 0.2s ease-in;

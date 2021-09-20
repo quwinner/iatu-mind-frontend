@@ -4,27 +4,29 @@ import * as ActionCreators from '../store/user.slice'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-// Application Hook Selector / Dispatch
+// User Hook Selector / Dispatch
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Selector
 export const useUser = () => {
   const dispatch = useDispatch()
-  const { signIn, logOut, removeUserSetting, setUserSetting, auth, signUp } = bindActionCreators(
+  const { signIn, logOut, removeUserSetting, setUserSetting, auth, signUp, setErrors } = bindActionCreators(
     ActionCreators,
     dispatch
   )
 
-  const { isLoggedIn, user } = useTypesSelector((state) => state.userState)
+  const { isLoggedIn, user, error } = useTypesSelector((state) => state.userState)
   return {
     isLoggedIn,
     user,
+    error,
     signIn,
     logOut,
     removeUserSetting,
     setUserSetting,
     auth,
     signUp,
+    setErrors,
   }
 }
 

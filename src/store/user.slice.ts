@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 
-import { apolloClient } from 'src'
-import { SIGNUP } from 'src/component/Graphql/Mutation'
+import { apolloClient } from '../index'
+import { SIGNUP } from '../component/Graphql/Mutation'
 
-import { UserState, User } from '../types'
+import { UserState, User, SignUpQL } from '../types'
 
 const initialState: UserState = {
   isLoggedIn: false,
@@ -17,10 +17,13 @@ const userSlice = createSlice({
   reducers: {
     setUserSetting: (state, { payload }: PayloadAction<any>) => {},
     removeUserSetting: (state, { payload }: PayloadAction<any>) => {},
+    setErrors: (state, { payload }: PayloadAction<any>) => {
+      state.error = payload
+    },
   },
 })
 
-export const { setUserSetting, removeUserSetting } = userSlice.actions
+export const { setUserSetting, removeUserSetting, setErrors } = userSlice.actions
 export default userSlice.reducer
 
 // Action
@@ -42,20 +45,22 @@ export function signIn() {
   }
 }
 
-export function signUp() {
-  return async (dispatch: Dispatch, getState: () => {}) => {
+export function signUp(variables: SignUpQL, history: any) {
+  return (dispatch: Dispatch, getState: () => {}) => {
     try {
-      const { data, errors } = await apolloClient.mutate({
-        mutation: SIGNUP,
-        variables: {
-          name: 'name',
-          username: 'userName',
-          password: 'password',
-        },
-      })
-    } catch (e) {
+      apolloClient
+        .mutate({
+          mutation: SIGNUP,
+          variables: variables,
+        })
+        .then((result) => {
+          history.push('/')
+        })
+        .catch((error) => {
+          dispatch(setErrors(error?.graphQLErrors[0]?.extensions?.response))
+        })
+    } catch (e: any) {
       console.log('signUp', e)
-    } finally {
     }
   }
 }

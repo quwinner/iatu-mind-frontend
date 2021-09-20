@@ -75,22 +75,3 @@ const GroupSelector: FC<Props> = (props) => {
 }
 
 export default GroupSelector
-
-const groups = [
-  {
-    id: 1,
-    name: 'АистБд-11',
-  },
-  {
-    id: 2,
-    name: 'ппп-21',
-  },
-  {
-    id: 3,
-    name: 'ыфва-22',
-  },
-  {
-    id: 4,
-    name: 'АистБд-31',
-  },
-]
