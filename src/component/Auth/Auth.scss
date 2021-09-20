@@ -11,6 +11,8 @@
     padding: 0 30px;
     padding-bottom: 60px;
     border-top: 3px solid var(--shadow-color-active);
+
+    margin: 25px 0;
   }
 }
 
@@ -21,6 +23,18 @@
     padding: 20px 0;
     font-weight: 300;
     margin: 0;
+  }
+}
+
+.auth-errors {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid var(--font-color-error);
+  padding: 10px 0;
+
+  &__text {
+    color: var(--font-color-error);
+    font-size: 1.5rem;
   }
 }
 
@@ -79,6 +93,10 @@
       color: var(--font-color-base);
       outline: 1px solid var(--background-input-border);
       border-bottom: 0px solid var(--shadow-color-active-darker);
+
+      &.error {
+        outline: 1px solid var(--font-color-error);
+      }
 
       &:hover {
         cursor: text;

@@ -87,3 +87,12 @@ export interface Period {
   year: Date
   half: number
 }
+
+export interface SignUpQL {
+  firstName: string
+  lastName: string
+  email: string
+  login: string
+  password: string
+  rePassword: string
+}
