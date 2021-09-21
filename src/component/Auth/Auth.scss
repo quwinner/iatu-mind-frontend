@@ -47,12 +47,6 @@
 
     padding: 10px 0;
 
-    &.login {
-    }
-
-    &.password {
-    }
-
     &.additional {
       flex-direction: row;
       align-items: flex-end;
@@ -61,7 +55,10 @@
       width: 100%;
     }
 
-    &.submit {
+    &.captcha {
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
 
     &__label {

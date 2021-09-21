@@ -1,6 +1,5 @@
 import Tooltip from '@material-ui/core/Tooltip'
 import { withStyles, Theme, makeStyles, createStyles } from '@material-ui/core/styles'
-import Zoom from '@material-ui/core/Zoom'
 import { TextField } from '@material-ui/core'
 
 export const TopTooltip = withStyles((theme: Theme) => ({
