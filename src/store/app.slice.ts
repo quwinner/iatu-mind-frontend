@@ -3,9 +3,11 @@ import { AppState, Group, Period } from '../types'
 
 import { GET_ALL_GROUPS, GET_ALL_PERIODS } from '../component/Graphql/Queries'
 import { apolloClient } from '..'
+import { AUTH } from '../component/Graphql/Mutation'
+import { setUserSetting } from './user.slice'
 
 const initialState: AppState = {
-  isLoading: false,
+  isLoad: false,
   isAsideOpen: false,
   isGroupSelectorOpen: false,
 
@@ -22,6 +24,9 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+    appInit: (state) => {
+      state.isLoad = true
+    },
     openAside: (state) => {
       state.isAsideOpen = true
     },
@@ -50,6 +55,7 @@ const appSlice = createSlice({
 })
 
 export const {
+  appInit,
   openAside,
   closeAside,
   openGroupSelector,
@@ -65,6 +71,25 @@ export default appSlice.reducer
 export function initApp() {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
+      const token = localStorage.getItem('jwt')
+      apolloClient
+        .mutate({
+          mutation: AUTH,
+          context: {
+            headers: {
+              authorization: token ? `Bearer ${token}` : '',
+            },
+          },
+        })
+        .then(({ data }) => {
+          dispatch(setUserSetting(data.auth.user))
+          localStorage.setItem('jwt', data.auth.token)
+        })
+        .catch((error) => {
+          console.log('error', error)
+          localStorage.removeItem('jwt')
+        })
+
       const { data } = await apolloClient.query({
         query: GET_ALL_GROUPS,
       })
@@ -84,18 +109,16 @@ export function initApp() {
 
       dispatch(setGroup(groups.find((x: any) => x.id === group)))
       dispatch(getAllGroups(groups))
-
       const periods = await apolloClient.query({
         query: GET_ALL_PERIODS,
       })
 
       dispatch(setPeriod(periods.data.periods.find((x: any) => x.id === period)))
       dispatch(getAllPeriods(periods.data.periods))
-
-      console.log('initApp')
     } catch (e) {
       console.log(e, 'initApp')
     } finally {
+      dispatch(appInit())
     }
   }
 }

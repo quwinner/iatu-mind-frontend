@@ -1,5 +1,5 @@
 import './App.scss'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 // Import components
@@ -19,16 +19,28 @@ import SignUp from './Auth/SignUp'
 
 // Custom hooks
 import { useApplication } from '../hook/useApplication'
+import Loading from './Loading/Loading'
 
 // Component
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const App: FC<any> = () => {
-  const { initApp } = useApplication()
+  const { isLoad, initApp } = useApplication()
+
+  const [minDelay, setMinDelay] = useState<boolean>(false)
 
   useEffect(() => {
     initApp()
+    setTimeout(() => setMinDelay(true), 1000)
   }, [])
+
+  if (!isLoad || !minDelay) {
+    return (
+      <div className="main-loading">
+        <Loading />
+      </div>
+    )
+  }
 
   return (
     <>

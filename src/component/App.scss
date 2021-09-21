@@ -15,6 +15,15 @@
   animation: fadein 0.25s ease-in;
 }
 
+.main-loading {
+  height: 100vh;
+
+  display: grid;
+  place-content: center;
+
+  animation: fadein 0.25s ease-in;
+}
+
 @media screen and (max-width: 768px) {
   html {
     font-size: 9px;

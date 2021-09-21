@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
 
 import { apolloClient } from '../index'
-import { SIGNUP } from '../component/Graphql/Mutation'
+import { SIGNIN, SIGNUP } from '../component/Graphql/Mutation'
 
-import { UserState, User, SignUpQL } from '../types'
+import { UserState, User, SignUpQL, SignInQL } from '../types'
 
 const initialState: UserState = {
   isLoggedIn: false,
@@ -15,8 +15,16 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserSetting: (state, { payload }: PayloadAction<any>) => {},
-    removeUserSetting: (state, { payload }: PayloadAction<any>) => {},
+    setUserSetting: (state, { payload }: PayloadAction<User>) => {
+      state.isLoggedIn = true
+      state.user = payload
+      state.error = []
+    },
+    removeUserSetting: (state) => {
+      state.isLoggedIn = false
+      state.user = {} as User
+      state.error = []
+    },
     setErrors: (state, { payload }: PayloadAction<any>) => {
       state.error = payload
     },
@@ -29,15 +37,22 @@ export default userSlice.reducer
 // Action
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function signIn() {
+export function signIn(variables: SignInQL, history: any) {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
-      //   const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/timetable/week`, {
-      //     params: {
-      //       group: group.name,
-      //       day,
-      //     },
-      //   })
+      apolloClient
+        .mutate({
+          mutation: SIGNIN,
+          variables: variables,
+        })
+        .then(({ data }) => {
+          setUserSetting(data.signin.user)
+          localStorage.setItem('jwt', data.signin.token)
+          history.push('/')
+        })
+        .catch((error) => {
+          dispatch(setErrors(error?.graphQLErrors[0]?.extensions?.response))
+        })
     } catch (e) {
       console.log('signIn', e)
     } finally {
@@ -54,7 +69,7 @@ export function signUp(variables: SignUpQL, history: any) {
           variables: variables,
         })
         .then((result) => {
-          history.push('/')
+          history.push('/signin')
         })
         .catch((error) => {
           dispatch(setErrors(error?.graphQLErrors[0]?.extensions?.response))

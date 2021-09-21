@@ -4,14 +4,24 @@ import './Auth.scss'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
+// Custom hooks
+import { useUser } from '../../hook/useUser'
+
 const SignIn: FC<any> = () => {
   const [login, setLogin] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { signIn, error } = useUser()
 
   let history = useHistory()
 
-  const clickSubmitHandler = (e: any) => {
-    // signIn({ login, password })
+  const clickSubmitHandler = async (e: any) => {
+    await signIn(
+      {
+        login,
+        password,
+      },
+      history
+    )
 
     setPassword('')
   }
@@ -26,6 +36,13 @@ const SignIn: FC<any> = () => {
         <header className="auth-header">
           <h1 className="auth-header__title">Войдите в свой аккаунт</h1>
         </header>
+        {error?.message && (
+          <div className="auth-errors">
+            {error?.message.map((x: any) => {
+              return <span className="auth-errors__text">{x}</span>
+            })}
+          </div>
+        )}
         <form className="auth-form form-group">
           <div className="form-group login">
             <label className="form-group__label">ЛОГИН</label>

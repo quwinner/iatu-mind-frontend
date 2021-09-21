@@ -27,21 +27,32 @@ export const SIGNUP = gql`
 `
 
 export const SIGNIN = gql`
-  mutation createUser($name: String!, $username: String!, $password: String!) {
-    createUser(name: $name, username: $username, password: $password) {
-      id
-      name
-      username
+  mutation ($login: String!, $password: String!) {
+    signIn(input: { login: $login, password: $password }) {
+      token
+      user {
+        id
+        login
+        password
+        dateReg
+        lastLogin
+        role
+      }
     }
   }
 `
 
 export const AUTH = gql`
-  mutation createUser($name: String!, $username: String!, $password: String!) {
-    createUser(name: $name, username: $username, password: $password) {
-      id
-      name
-      username
+  mutation {
+    auth {
+      token
+      user {
+        id
+        login
+        dateReg
+        lastLogin
+        role
+      }
     }
   }
 `

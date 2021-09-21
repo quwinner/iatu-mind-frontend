@@ -6,7 +6,7 @@
 // =======================================================================================
 
 export interface AppState {
-  isLoading: boolean
+  isLoad: boolean
   isAsideOpen: boolean
   isGroupSelectorOpen: boolean
 
@@ -46,8 +46,12 @@ export interface UserState {
 }
 
 export interface User {
-  id: number
-  name: string
+  id: string
+  login: string
+  password?: string
+  dateReg: Date
+  lastLogin: Date
+  role: string
 }
 
 // =======================================================================================
@@ -95,4 +99,9 @@ export interface SignUpQL {
   login: string
   password: string
   rePassword: string
+}
+
+export interface SignInQL {
+  login: string
+  password: string
 }
