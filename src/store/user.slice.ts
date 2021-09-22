@@ -21,6 +21,7 @@ const userSlice = createSlice({
       state.error = []
     },
     removeUserSetting: (state) => {
+      localStorage.removeItem('jwt')
       state.isLoggedIn = false
       state.user = {} as User
       state.error = []
@@ -46,11 +47,12 @@ export function signIn(variables: SignInQL, history: any) {
           variables: variables,
         })
         .then(({ data }) => {
-          setUserSetting(data.signin.user)
-          localStorage.setItem('jwt', data.signin.token)
+          setUserSetting(data.signIn.user)
+          localStorage.setItem('jwt', data.signIn.token)
           history.push('/')
         })
         .catch((error) => {
+          console.log(error)
           dispatch(setErrors(error?.graphQLErrors[0]?.extensions?.response))
         })
     } catch (e) {
@@ -80,17 +82,6 @@ export function signUp(variables: SignUpQL, history: any) {
   }
 }
 
-export function logOut() {
-  return async (dispatch: Dispatch, getState: () => {}) => {
-    try {
-    } catch (e) {
-      console.log('logOut', e)
-    } finally {
-    }
-  }
-}
-
-// Authorization
 export function auth() {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {

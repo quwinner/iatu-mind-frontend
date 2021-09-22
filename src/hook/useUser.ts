@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux'
 // Selector
 export const useUser = () => {
   const dispatch = useDispatch()
-  const { signIn, logOut, removeUserSetting, setUserSetting, auth, signUp, setErrors } = bindActionCreators(
+  const { signIn, removeUserSetting, setUserSetting, auth, signUp, setErrors } = bindActionCreators(
     ActionCreators,
     dispatch
   )
@@ -21,7 +21,6 @@ export const useUser = () => {
     user,
     error,
     signIn,
-    logOut,
     removeUserSetting,
     setUserSetting,
     auth,
