@@ -25,16 +25,15 @@
 
   flex-grow: 1;
   border-radius: 24px;
-  background: rgb(31, 31, 31);
+  // background: var(--background-color-lighter);
+  background-color: var(--background-color);
 
   top: 0;
 
   max-width: 1000px;
   width: calc(100% - 10px);
 
-  min-height: 500px;
-
-  margin-top: 100px;
+  margin: 100px 0;
   padding: 5px;
 }
 
@@ -50,15 +49,22 @@
 
   &__title {
     position: absolute;
-    color: var(--font-color-base);
+    color: var(--font-color-i-base-darker);
     font-weight: 500;
-    font-size: 18px;
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    span {
+      font-size: 1.5rem;
+    }
   }
 
   &__close {
     cursor: pointer;
     position: absolute;
-    color: var(--font-color-base);
     right: 0;
     padding-right: 15px;
   }
@@ -72,8 +78,9 @@
 }
 
 .ticket-text {
-  color: var(--font-color-base);
-  font-size: 2rem;
+  color: var(--font-color-i-base-darker);
+  font-weight: 400;
+  font-size: 1.8rem;
   padding: 10px;
 }
 
