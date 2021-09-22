@@ -26,9 +26,12 @@ const ScheduleTicket: FC<Props> = (props) => {
       onClick={(e: any) => props.setShow(false)}
       className={cn('l-ticket unselectable', { active: props.setShow.isActive })}
     >
-      <section className="ticket-main">
+      <section onClick={(e) => e.stopPropagation()} className="ticket-main">
         <div className="ticket-header">
-          <div className="ticket-header__title">Примечание к расписанию</div>
+          <div className="ticket-header__title">
+            <h1>Примечание к расписанию</h1>
+            {/* <span>...текст...</span> */}
+          </div>
           <div onClick={(e: any) => props.setShow(false)} className="ticket-header__close">
             <Close />
           </div>

@@ -14,12 +14,12 @@ export const useApplication = () => {
   const { openAside, closeAside, initApp, closeGroupSelector, openGroupSelector, changeGroup, changePeriod } =
     bindActionCreators(ActionCreators, dispatch)
 
-  const { isAsideOpen, isLoading, groups, groupNow, periods, periodNow, isGroupSelectorOpen, error } = useTypesSelector(
+  const { isAsideOpen, isLoad, groups, groupNow, periods, periodNow, isGroupSelectorOpen, error } = useTypesSelector(
     (state) => state.appState
   )
   return {
     isAsideOpen,
-    isLoading,
+    isLoad,
     groups,
     groupNow,
     isGroupSelectorOpen,
@@ -31,6 +31,8 @@ export const useApplication = () => {
     openGroupSelector,
     changeGroup,
     changePeriod,
+    periods,
+    periodNow,
   }
 }
 

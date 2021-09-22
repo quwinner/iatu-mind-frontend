@@ -7,6 +7,8 @@ import loc from 'dayjs/locale/ru'
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
 import { ReactComponent as Ticket } from '../../../utils/img/ticket.svg'
+import { ReactComponent as Edit } from '../../../utils/img/edit.svg'
+
 import ScheduleTicket from '../ScheduleTicket/ScheduleTicket'
 import SchedulePair from '../SchedulePair/SchedulePair'
 
@@ -14,6 +16,9 @@ import SchedulePair from '../SchedulePair/SchedulePair'
 import uniquePair from '../../../utils/uniquePair'
 import fixDayName from '../../../utils/fixDayName'
 import { Schedule } from '../../../types'
+import { useUser } from '../../../hook/useUser'
+
+// Custom hooks
 
 // Interface
 interface Props {
@@ -25,6 +30,8 @@ interface Props {
 const ScheduleItem: FC<Props> = (props) => {
   const [ticketShow, setTicketShow] = useState<boolean>(false)
   const [extend, setExtend] = useState<boolean>(false)
+
+  const { user } = useUser()
 
   const date = props.schedule[0]?.date
 
@@ -51,12 +58,20 @@ const ScheduleItem: FC<Props> = (props) => {
             }}
             className="schedule-header__ticket"
           >
-            <Ticket
+            {extend && user.role === 'admin' && (
+              <Edit
+                onClick={(e: any) => {
+                  if (ticketShow) return
+                  setTicketShow(true)
+                }}
+              />
+            )}
+            {/* <Ticket
               onClick={(e: any) => {
                 if (ticketShow) return
                 setTicketShow(true)
               }}
-            />
+            /> */}
           </div>
         </div>
         {optionsPair.map((x, key) => {
@@ -75,6 +90,7 @@ const ScheduleItem: FC<Props> = (props) => {
         })}
       </div>
       {ticketShow && <ScheduleTicket setShow={setTicketShow} />}
+      {/* {ticketEditShow && <ScheduleTicketEdit setShow={setTicketEditShow} />} */}
     </>
   )
 }

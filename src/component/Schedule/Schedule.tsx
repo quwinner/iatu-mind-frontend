@@ -43,12 +43,7 @@ const Schedule: FC<Props> = (props) => {
     getScheduleWeek(groupNow, dayjs(new Date()).add(daySkip, 'day').format('YYYY.MM.DD'))
   }, [groupNow, daySkip])
 
-  if (!isLoading)
-    return (
-      <section className="schedule unselectable load">
-        <Loading />
-      </section>
-    )
+  if (!isLoading) return <Loading />
 
   return (
     <section className="schedule unselectable">

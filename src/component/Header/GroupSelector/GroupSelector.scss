@@ -9,6 +9,7 @@
   padding: 0 10px;
   height: 100%;
   cursor: pointer;
+  white-space: nowrap;
   z-index: 1;
   background-color: inherit;
 
@@ -29,9 +30,11 @@
   opacity: 0;
 
   pointer-events: none;
+  transform: translateY(-1000px);
 
   &.active {
     pointer-events: all;
+    transform: translateY(0px);
 
     opacity: 1;
     transition: all 0.2s ease-in;

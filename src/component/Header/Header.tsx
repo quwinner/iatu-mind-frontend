@@ -31,9 +31,7 @@ const Header: FC<Props> = (props) => {
         }}
         className="header__menu"
       />
-      <div className="header__tab">
-        Расписание {/* Это стейтовое значение будет меняться в зависимости от вкладки */}
-      </div>
+      {/* <div className="header__tab">Расписани</div> */}
       <SearchBar />
       <GroupSelector />
       <Profile />
