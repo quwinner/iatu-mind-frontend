@@ -7602,6 +7602,11 @@
     "array-includes" "^3.1.2"
     "object.assign" "^4.1.2"
 
+"keen-slider@^5.5.1":
+  "integrity" "sha512-QXGZGt5Hbe0YufR/RYbOG03MmOk43RQEXqkkSvjr8ZS67sVR7LRp5RIvJALfjl+A7BnHNr1wd1QBOemwy65Lfw=="
+  "resolved" "https://registry.npmjs.org/keen-slider/-/keen-slider-5.5.1.tgz"
+  "version" "5.5.1"
+
 "killable@^1.0.1":
   "integrity" "sha512-LzqtLKlUwirEUyl/nicirVmNiPvYs7l5n8wOPP7fyJVpUPkvCnW/vuiXGpylGUlnPDnB7311rARzAt3Mhswpjg=="
   "resolved" "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz"

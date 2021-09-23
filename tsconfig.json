@@ -1,8 +1,4 @@
 {
-  "extends": "./paths.json",
-  "include": [
-    "src"
-  ],
   "compilerOptions": {
     "target": "esnext",
     "lib": [
@@ -23,5 +19,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "extends": "./paths.json"
 }

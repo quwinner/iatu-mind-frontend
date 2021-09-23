@@ -105,3 +105,8 @@ export interface SignInQL {
   login: string
   password: string
 }
+
+export interface Disciplines {
+  id: number
+  name: string
+}

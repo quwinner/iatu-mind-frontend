@@ -18,3 +18,12 @@ export const GET_ALL_PERIODS = gql`
     }
   }
 `
+
+export const GET_ALL_DISCIPLINES = gql`
+  query {
+    disciplines {
+      id
+      name
+    }
+  }
+`

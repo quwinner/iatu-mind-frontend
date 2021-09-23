@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
-import { AppState, Group, Period } from '../types'
+import { AppState, Group, Period } from '@types'
 
-import { GET_ALL_GROUPS, GET_ALL_PERIODS } from '../component/Graphql/Queries'
-import { apolloClient } from '..'
-import { AUTH } from '../component/Graphql/Mutation'
+import { GET_ALL_GROUPS, GET_ALL_PERIODS } from '../graphql/queries'
+import { AUTH } from '../graphql/mutation'
 import { setUserSetting } from './user.slice'
+import { apolloClient } from '../graphql/index'
 
 const initialState: AppState = {
   isLoad: false,
@@ -119,6 +119,25 @@ export function initApp() {
       console.log(e, 'initApp')
     } finally {
       dispatch(appInit())
+      console.log(
+        `
+
+
+
+
+          ╭━━┳━━━┳━━━━┳╮╱╭╮╭━╮╭━┳━━┳━╮╱╭┳━━━╮
+          ╰┫┣┫╭━╮┃╭╮╭╮┃┃╱┃┃┃┃╰╯┃┣┫┣┫┃╰╮┃┣╮╭╮┃
+          ╱┃┃┃┃╱┃┣╯┃┃╰┫┃╱┃┃┃╭╮╭╮┃┃┃┃╭╮╰╯┃┃┃┃┃
+          ╱┃┃┃╰━╯┃╱┃┃╱┃┃╱┃┃┃┃┃┃┃┃┃┃┃┃╰╮┃┃┃┃┃┃
+          ╭┫┣┫╭━╮┃╱┃┃╱┃╰━╯┃┃┃┃┃┃┣┫┣┫┃╱┃┃┣╯╰╯┃
+          ╰━━┻╯╱╰╯╱╰╯╱╰━━━╯╰╯╰╯╰┻━━┻╯╱╰━┻━━━╯
+
+
+
+
+
+        `
+      )
     }
   }
 }
