@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, Dispatch } from '@reduxjs/toolkit'
+import { apolloClient } from '../graphql/index'
 
-import { apolloClient } from '../index'
-import { SIGNIN, SIGNUP } from '../component/Graphql/Mutation'
+import { SIGNIN, SIGNUP } from '../graphql/mutation'
 
 import { UserState, User, SignUpQL, SignInQL } from '../types'
 
@@ -70,6 +70,7 @@ export function signUp(variables: SignUpQL, history: any) {
           mutation: SIGNUP,
           variables: variables,
         })
+
         .then((result) => {
           history.push('/signin')
         })

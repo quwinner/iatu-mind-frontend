@@ -7,11 +7,8 @@ import loc from 'dayjs/locale/ru'
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Import Component
 import { ReactComponent as Ticket } from '../../../utils/img/ticket.svg'
-<<<<<<< HEAD
-=======
 import { ReactComponent as Edit } from '../../../utils/img/edit.svg'
 
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
 import ScheduleTicket from '../ScheduleTicket/ScheduleTicket'
 import SchedulePair from '../SchedulePair/SchedulePair'
 
@@ -19,12 +16,9 @@ import SchedulePair from '../SchedulePair/SchedulePair'
 import uniquePair from '../../../utils/uniquePair'
 import fixDayName from '../../../utils/fixDayName'
 import { Schedule } from '../../../types'
-<<<<<<< HEAD
-=======
 import { useUser } from '../../../hook/useUser'
 
 // Custom hooks
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
 
 // Interface
 interface Props {
@@ -37,11 +31,8 @@ const ScheduleItem: FC<Props> = (props) => {
   const [ticketShow, setTicketShow] = useState<boolean>(false)
   const [extend, setExtend] = useState<boolean>(false)
 
-<<<<<<< HEAD
-=======
   const { user } = useUser()
 
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   const date = props.schedule[0]?.date
 
   const optionsPair = useMemo(() => uniquePair(props.schedule), [props.schedule])
@@ -67,9 +58,6 @@ const ScheduleItem: FC<Props> = (props) => {
             }}
             className="schedule-header__ticket"
           >
-<<<<<<< HEAD
-            <Ticket
-=======
             {extend && user.role === 'admin' && (
               <Edit
                 onClick={(e: any) => {
@@ -79,16 +67,11 @@ const ScheduleItem: FC<Props> = (props) => {
               />
             )}
             {/* <Ticket
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
               onClick={(e: any) => {
                 if (ticketShow) return
                 setTicketShow(true)
               }}
-<<<<<<< HEAD
-            />
-=======
             /> */}
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
           </div>
         </div>
         {optionsPair.map((x, key) => {
@@ -107,10 +90,7 @@ const ScheduleItem: FC<Props> = (props) => {
         })}
       </div>
       {ticketShow && <ScheduleTicket setShow={setTicketShow} />}
-<<<<<<< HEAD
-=======
       {/* {ticketEditShow && <ScheduleTicketEdit setShow={setTicketEditShow} />} */}
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
     </>
   )
 }

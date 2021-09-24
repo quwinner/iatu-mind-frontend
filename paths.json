@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-<<<<<<< HEAD
-      "style/*": ["src/style/*"]
-=======
-      "@img/*": ["src/utils/img/*"]
->>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
+      "@types": ["src/types"]
     }
   }
 }

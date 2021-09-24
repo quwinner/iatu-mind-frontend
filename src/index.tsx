@@ -13,11 +13,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 //Redux
 import { store } from './store/index'
 import { Provider } from 'react-redux'
+import { apolloClient } from './graphql'
 
-export const apolloClient = new ApolloClient({
-  uri: `${process.env.REACT_APP_BACKEND_URL}/graphql`,
-  cache: new InMemoryCache(),
-})
+// export const apolloClient = new ApolloClient({
+//   uri: `${process.env.REACT_APP_BACKEND_URL}/graphql`,
+//   cache: new InMemoryCache(),
+// })
 
 ReactDOM.render(
   <Provider store={store}>

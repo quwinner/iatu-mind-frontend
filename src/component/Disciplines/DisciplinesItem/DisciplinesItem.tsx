@@ -24,7 +24,7 @@ const DisciplinesItem: FC<Props> = (props) => {
     <div className="discipline-content">
       <div className="discipline-content__info info-item">
         <History className="info-item__icon" />
-        <div className="info-item__name">{props.discipline.name}</div>
+        <p className="info-item__name">{props.discipline.name}</p>
       </div>
 
       <div className="discipline-content__hr" />
