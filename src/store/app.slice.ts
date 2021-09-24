@@ -3,9 +3,17 @@ import { AppState, Group, Period } from '../types'
 
 import { GET_ALL_GROUPS, GET_ALL_PERIODS } from '../component/Graphql/Queries'
 import { apolloClient } from '..'
+<<<<<<< HEAD
 
 const initialState: AppState = {
   isLoading: false,
+=======
+import { AUTH } from '../component/Graphql/Mutation'
+import { setUserSetting } from './user.slice'
+
+const initialState: AppState = {
+  isLoad: false,
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   isAsideOpen: false,
   isGroupSelectorOpen: false,
 
@@ -22,6 +30,12 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
+<<<<<<< HEAD
+=======
+    appInit: (state) => {
+      state.isLoad = true
+    },
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
     openAside: (state) => {
       state.isAsideOpen = true
     },
@@ -50,6 +64,10 @@ const appSlice = createSlice({
 })
 
 export const {
+<<<<<<< HEAD
+=======
+  appInit,
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   openAside,
   closeAside,
   openGroupSelector,
@@ -65,6 +83,28 @@ export default appSlice.reducer
 export function initApp() {
   return async (dispatch: Dispatch, getState: () => {}) => {
     try {
+<<<<<<< HEAD
+=======
+      const token = localStorage.getItem('jwt')
+      apolloClient
+        .mutate({
+          mutation: AUTH,
+          context: {
+            headers: {
+              authorization: token ? `Bearer ${token}` : '',
+            },
+          },
+        })
+        .then(({ data }) => {
+          dispatch(setUserSetting(data.auth.user))
+          localStorage.setItem('jwt', data.auth.token)
+        })
+        .catch((error) => {
+          console.log('error', error)
+          localStorage.removeItem('jwt')
+        })
+
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
       const { data } = await apolloClient.query({
         query: GET_ALL_GROUPS,
       })
@@ -84,18 +124,28 @@ export function initApp() {
 
       dispatch(setGroup(groups.find((x: any) => x.id === group)))
       dispatch(getAllGroups(groups))
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
       const periods = await apolloClient.query({
         query: GET_ALL_PERIODS,
       })
 
       dispatch(setPeriod(periods.data.periods.find((x: any) => x.id === period)))
       dispatch(getAllPeriods(periods.data.periods))
+<<<<<<< HEAD
 
       console.log('initApp')
     } catch (e) {
       console.log(e, 'initApp')
     } finally {
+=======
+    } catch (e) {
+      console.log(e, 'initApp')
+    } finally {
+      dispatch(appInit())
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
     }
   }
 }

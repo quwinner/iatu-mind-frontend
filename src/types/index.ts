@@ -6,7 +6,11 @@
 // =======================================================================================
 
 export interface AppState {
+<<<<<<< HEAD
   isLoading: boolean
+=======
+  isLoad: boolean
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   isAsideOpen: boolean
   isGroupSelectorOpen: boolean
 
@@ -36,6 +40,28 @@ export interface ScheduleState {
 }
 
 // =======================================================================================
+<<<<<<< HEAD
+=======
+// User
+// =======================================================================================
+
+export interface UserState {
+  isLoggedIn: boolean
+  user: User
+  error: any
+}
+
+export interface User {
+  id: string
+  login: string
+  password?: string
+  dateReg: Date
+  lastLogin: Date
+  role: string
+}
+
+// =======================================================================================
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
 // Root
 // =======================================================================================
 
@@ -46,6 +72,13 @@ export interface ScheduleState {
 
 // =======================================================================================
 
+<<<<<<< HEAD
+=======
+// =======================================================================================
+// Different types
+// =======================================================================================
+
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
 export interface Schedule {
   timeWait?: number
   date: string | Date
@@ -68,3 +101,20 @@ export interface Period {
   year: Date
   half: number
 }
+<<<<<<< HEAD
+=======
+
+export interface SignUpQL {
+  firstName: string
+  lastName: string
+  email: string
+  login: string
+  password: string
+  rePassword: string
+}
+
+export interface SignInQL {
+  login: string
+  password: string
+}
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7

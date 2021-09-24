@@ -9,6 +9,10 @@
   padding: 0 10px;
   height: 100%;
   cursor: pointer;
+<<<<<<< HEAD
+=======
+  white-space: nowrap;
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   z-index: 1;
   background-color: inherit;
 
@@ -29,9 +33,17 @@
   opacity: 0;
 
   pointer-events: none;
+<<<<<<< HEAD
 
   &.active {
     pointer-events: all;
+=======
+  transform: translateY(-1000px);
+
+  &.active {
+    pointer-events: all;
+    transform: translateY(0px);
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
 
     opacity: 1;
     transition: all 0.2s ease-in;

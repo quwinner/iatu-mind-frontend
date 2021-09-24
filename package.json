@@ -22,6 +22,10 @@
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+<<<<<<< HEAD
+=======
+    "react-google-recaptcha": "^2.1.0",
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.2.1",
     "react-scripts": "^4.0.3",
@@ -54,6 +58,10 @@
   },
   "devDependencies": {
     "@types/autosuggest-highlight": "^3.1.1",
+<<<<<<< HEAD
+=======
+    "@types/react-google-recaptcha": "^2.1.2",
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
     "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.1.8"
   }

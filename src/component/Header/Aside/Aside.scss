@@ -6,7 +6,11 @@ $sizeAsideIncrement: 4.5;
 .aside {
   position: fixed;
   overflow-x: hidden;
+<<<<<<< HEAD
   z-index: 2;
+=======
+  z-index: 5;
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   background: var(--background-color-lighter);
   border-right: 1px solid var(--border-base-color);
 }
@@ -78,7 +82,11 @@ $sizeAsideIncrement: 4.5;
 .background-blur {
   opacity: 0;
 
+<<<<<<< HEAD
   z-index: 1;
+=======
+  z-index: 4;
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   position: fixed;
   height: 100vh;
   width: 100vw;

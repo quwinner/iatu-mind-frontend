@@ -75,6 +75,7 @@ const GroupSelector: FC<Props> = (props) => {
 }
 
 export default GroupSelector
+<<<<<<< HEAD
 
 const groups = [
   {
@@ -94,3 +95,5 @@ const groups = [
     name: 'АистБд-31',
   },
 ]
+=======
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7

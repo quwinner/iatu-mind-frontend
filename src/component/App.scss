@@ -4,11 +4,30 @@
 .main {
   position: relative;
   font-family: var(--font-family-base);
+<<<<<<< HEAD
   position: relative;
+=======
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   padding-top: 50px;
   width: 100%;
   min-height: calc(100vh - 40px);
 
+<<<<<<< HEAD
+=======
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: fadein 0.25s ease-in;
+}
+
+.main-loading {
+  height: 100vh;
+
+  display: grid;
+  place-content: center;
+
+>>>>>>> 7a268f0b98919707a0bb59631e0343e18c2c5da7
   animation: fadein 0.25s ease-in;
 }
 
